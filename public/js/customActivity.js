@@ -91,7 +91,20 @@ define([
         var postcardTextValue = $('#postcard-text').val();
 
         payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens
+            "postcardURL": postcardURLValue,
+            "postcardText": postcardTextValue,
+            "tokens": authTokens,
+            "id": "{{Contact.Attribute.SMSJourney.id}}",
+            "description": "{{Contact.Attribute.SMSJourney.description}}",
+            "sender": "{{Contact.Attribute.SMSJourney.sender}}",
+            "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
+            "text": "{{Contact.Attribute.SMSJourney.text}}",
+            "sendingDate": "{{Contact.Attribute.SMSJourney.sendingDate}}",
+            "recipients": [
+                       {
+                           "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}"
+                       }
+                   ]
         }];
         
         payload['metaData'].isConfigured = true;
