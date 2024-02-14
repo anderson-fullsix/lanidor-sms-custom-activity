@@ -40,6 +40,7 @@
         }
     },
     "configurationArguments": {
+      "applicationExtensionKey": "8a3768a4-fe3c-4734-becd-8b66545344bb",
       "save": {
         "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/save",
           "verb": "POST",
