@@ -29,7 +29,7 @@
           "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
-            "header": "[{"Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ijc2YjM5ODM3LWJkNDMtNDc0NC04N2M3LTAyMWMyZDc1NGM4NSIsIm5iZiI6MTcxMjkyNzY2NywiZXhwIjoxNzEyOTI4NTY3LCJpYXQiOjE3MTI5Mjc2Njd9.mlPuUHwsK5eRDwbHCE2S5BNkotz2aPtMZi41-rh0NIQ"}]",
+            "header": [{"Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ijc2YjM5ODM3LWJkNDMtNDc0NC04N2M3LTAyMWMyZDc1NGM4NSIsIm5iZiI6MTcxMjkyNzY2NywiZXhwIjoxNzEyOTI4NTY3LCJpYXQiOjE3MTI5Mjc2Njd9.mlPuUHwsK5eRDwbHCE2S5BNkotz2aPtMZi41-rh0NIQ"}],
             "format": "json",
             "useJwt": true,
             "timeout": 10000
