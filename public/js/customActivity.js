@@ -114,7 +114,7 @@ define([
             "sendnow": "true",
             "recipients": [
                        {
-                           "Mobile":"{{Contact.Attribute.JBDataExtension.Mobile}}"
+                           "Mobile":"{{InteractionDefaults.MobileNumber}}"
                        }
                    ]
         }];
