@@ -74,14 +74,6 @@ define([
                     $('#description').val(val);
                 }
 
-                if (key === 'sender') {
-                    $('#sender').val(val);
-                }
-
-                if (key === 'partnerId') {
-                    $('#partnerId').val(val);
-                }
-
                 if (key === 'text') {
                     $('#text').val(val);
                 }
