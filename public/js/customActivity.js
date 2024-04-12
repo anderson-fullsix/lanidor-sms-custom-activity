@@ -86,14 +86,6 @@ define([
                     $('#text').val(val);
                 }
 
-                if (key === 'sendingDate') {
-                    $('#sendingDate').val(val);
-                }
-
-                if (key === 'mobile') {
-                    $('#mobile').val(val);
-                }
-
             });
         });
 
@@ -114,16 +106,13 @@ define([
     }
 
     function save() {
-        var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
-
-  
+        let now = Date.now();
         var id = $('#id').val();
         var description = $('#description').val();
         var sender = $('#sender').val();
         var partnerId = $('#partnerId').val();
         var text = $('#text').val();
-        var sendingDate = $('#sendingDate').val();
+        var sendingDate = now;
         var mobile = $('#mobile').val();
         
         payload['arguments'].execute.inArguments = [{
