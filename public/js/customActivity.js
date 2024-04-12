@@ -110,7 +110,6 @@ define([
             "sender": "LANIDOR",
             "partnerId": "508006007",
             "text": text,
-            "sendingDate": sendingDate,
             "sendnow": "true",
             "recipients": [
                        {
