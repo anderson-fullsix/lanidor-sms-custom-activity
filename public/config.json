@@ -16,12 +16,8 @@
         "execute": {
            "inArguments":[
                {
-                   "id": "{{Contact.Attribute.SMSJourney.id}}",
-                   "description": "{{Contact.Attribute.SMSJourney.description}}",
-                   "sender": "{{Contact.Attribute.SMSJourney.sender}}",
-                   "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
-                   "text": "{{Contact.Attribute.SMSJourney.text}}",
-                   "sendingDate": "{{Contact.Attribute.SMSJourney.sendingDate}}",
+                   "sender": "LANIDOR",
+                   "partnerId": "508006007",
                    "recipients": [
                        {
                            "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}"
