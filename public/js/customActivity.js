@@ -65,8 +65,35 @@ define([
 
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
-                
-              
+
+                if (key === 'id') {
+                    $('#id').val(val);
+                }
+
+                if (key === 'description') {
+                    $('#description').val(val);
+                }
+
+                if (key === 'sender') {
+                    $('#sender').val(val);
+                }
+
+                if (key === 'partnerId') {
+                    $('#partnerId').val(val);
+                }
+
+                if (key === 'text') {
+                    $('#text').val(val);
+                }
+
+                if (key === 'sendingDate') {
+                    $('#sendingDate').val(val);
+                }
+
+                if (key === 'mobile') {
+                    $('#mobile').val(val);
+                }
+
             });
         });
 
