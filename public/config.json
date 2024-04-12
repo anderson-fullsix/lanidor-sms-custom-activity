@@ -20,7 +20,7 @@
                    "partnerId": "508006007",
                    "recipients": [
                        {
-                           "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}"
+                           "Mobile":"{{InteractionDefaults.MobileNumber}}"
                        }
                    ]
                }
