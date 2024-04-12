@@ -102,7 +102,7 @@ define([
         var id = $('#id').val();
         var description = $('#description').val();
         var text = $('#text').val();
-        var sendingDate = now.toISOString();
+        var sendingDate = now;
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
