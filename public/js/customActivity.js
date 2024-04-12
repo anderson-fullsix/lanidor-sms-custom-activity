@@ -101,23 +101,20 @@ define([
         let now = Date.now();
         var id = $('#id').val();
         var description = $('#description').val();
-        var sender = $('#sender').val();
-        var partnerId = $('#partnerId').val();
         var text = $('#text').val();
-        var sendingDate = now;
-        var mobile = $('#mobile').val();
+        var sendingDate = now.toISOString();
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
             "description": description,
-            "sender": sender,
-            "partnerId": partnerId,
+            "sender": "LANIDOR",
+            "partnerId": "508006007",
             "text": text,
             "sendingDate": sendingDate,
             "sendnow": "true",
             "recipients": [
                        {
-                           "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}"
+                           "Mobile":"{{Contact.Attribute.JBDataExtension.Mobile}}"
                        }
                    ]
         }];
