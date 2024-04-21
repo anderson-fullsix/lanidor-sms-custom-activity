@@ -103,6 +103,7 @@ define([
         var description = $('#description').val();
         var text = $('#text').val();
         var sendingDate = now;
+        var newToken = "{{InteractionDefaults.MobileNumber}}"
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
