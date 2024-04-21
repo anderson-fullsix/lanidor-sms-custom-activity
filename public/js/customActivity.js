@@ -103,7 +103,7 @@ define([
         var description = $('#description').val();
         var text = $('#text').val();
         var sendingDate = now;
-        var newToken = "{{InteractionDefaults.MobileNumber}}"
+        var newToken = "{{Contact.Attributes.SMS_Token.tokenJWT}}";
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
