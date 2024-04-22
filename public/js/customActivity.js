@@ -1,12 +1,10 @@
-'use strict';
-
 define([
-    'postmonger',
-    'axios' // Importando o módulo axios para fazer a chamada HTTP
+    'postmonger'
 ], function (
-    Postmonger,
-    axios
+    Postmonger
 ) {
+    'use strict';
+
     var connection = new Postmonger.Session();
     var authTokens = {};
     var payload = {};
@@ -20,14 +18,17 @@ define([
     connection.on('requestedDataSources', onRequestedDataSources);
 
     connection.on('clickedNext', save);
-
+   
     function onRender() {
+        // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
+
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');  
+
     }
 
     function onRequestedDataSources(dataSources){
@@ -38,14 +39,15 @@ define([
     function onRequestedInteraction (interaction) {    
         console.log('*** requestedInteraction ***');
         console.log(interaction);
-    }
+     }
 
-    function onRequestedTriggerEventDefinition(eventDefinitionModel) {
+     function onRequestedTriggerEventDefinition(eventDefinitionModel) {
         console.log('*** requestedTriggerEventDefinition ***');
         console.log(eventDefinitionModel);
     }
 
     function initialize(data) {
+        console.log(data);
         if (data) {
             payload = data;
         }
@@ -59,8 +61,11 @@ define([
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
+        console.log(inArguments);
+
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
+
                 if (key === 'id') {
                     $('#id').val(val);
                 }
@@ -72,13 +77,19 @@ define([
                 if (key === 'text') {
                     $('#text').val(val);
                 }
+
             });
         });
 
+        connection.trigger('updateButton', {
+            button: 'next',
+            text: 'done',
+            visible: true
+        });
     }
 
-
     function onGetTokens(tokens) {
+        console.log(tokens);
         authTokens = tokens;
     }
 
@@ -87,11 +98,12 @@ define([
     }
 
     function save() {
+        let now = Date.now();
         var id = $('#id').val();
         var description = $('#description').val();
         var text = $('#text').val();
-        var now = Date.now();
-
+        var sendingDate = now;
+        
         payload['arguments'].execute.inArguments = [{
             "id": id,
             "description": description,
@@ -99,9 +111,11 @@ define([
             "partnerId": "508006007",
             "text": text,
             "sendnow": "true",
-            "recipients": [{
-                "Mobile": "{{InteractionDefaults.MobileNumber}}"
-            }]
+            "recipients": [
+                       {
+                           "Mobile":"{{InteractionDefaults.MobileNumber}}"
+                       }
+                   ]
         }];
         
         payload['metaData'].isConfigured = true;
@@ -109,4 +123,6 @@ define([
         console.log(payload);
         connection.trigger('updateActivity', payload);
     }
+
+
 });
