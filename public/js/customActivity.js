@@ -125,7 +125,6 @@ define([
         var description = $('#description').val();
         var text = $('#text').val();
         var now = Date.now();
-        var token = newToken;
 
         payload['arguments'].execute.inArguments = [{
             "id": id,
