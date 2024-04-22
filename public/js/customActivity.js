@@ -81,6 +81,23 @@ define([
             });
         });
 
+        // Chama a função para gerar o token OAuth
+        gerarTokenOAuth()
+            .then(accessToken => {
+                console.log('Token OAuth gerado:', accessToken);
+                $('#accessToken').val(accessToken);
+
+                connection.trigger('updateButton', {
+                    button: 'next',
+                    text: 'done',
+                    visible: true
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao gerar token OAuth:', error);
+                // Trate o erro conforme necessário
+            });
+
         connection.trigger('updateButton', {
             button: 'next',
             text: 'done',
