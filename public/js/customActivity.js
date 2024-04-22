@@ -1,13 +1,10 @@
-'use strict';
-//import axios from 'axios';
-
 define([
     'postmonger'
-//    'axios' // Importando o módulo axios para fazer a chamada HTTP
 ], function (
     Postmonger
-//    axios
 ) {
+    'use strict';
+
     var connection = new Postmonger.Session();
     var authTokens = {};
     var payload = {};
@@ -84,23 +81,6 @@ define([
             });
         });
 
-        // Chama a função para gerar o token OAuth
-/*        gerarTokenOAuth()
-            .then(accessToken => {
-                console.log('Token OAuth gerado:', accessToken);
-                $('#accessToken').val(accessToken);
-
-                connection.trigger('updateButton', {
-                    button: 'next',
-                    text: 'done',
-                    visible: true
-                });
-            })
-            .catch(error => {
-                console.error('Erro ao gerar token OAuth:', error);
-                // Trate o erro conforme necessário
-            });
-*/
         connection.trigger('updateButton', {
             button: 'next',
             text: 'done',
@@ -108,26 +88,6 @@ define([
         });
     }
 
-    // Função para fazer a chamada à API e gerar o token OAuth
-/*
-    function gerarTokenOAuth() {
-    var urlLogin = "https://www.abinfo.pt/api/sms/auth/login";
-    var token = "YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE=";
-    var auth = "Bearer " + token;
-
-    return axios.get(urlLogin, {
-        headers: {
-            Authorization: auth
-        }
-    })
-    .then(response => {
-        return response.data.token;
-    })
-    .catch(error => {
-        throw error;
-    });
-}
-*/
     function onGetTokens(tokens) {
         console.log(tokens);
         authTokens = tokens;
@@ -143,7 +103,6 @@ define([
         var description = $('#description').val();
         var text = $('#text').val();
         var sendingDate = now;
-        var newToken = "{{Contact.Attributes.SMS_Token.tokeJWT}}";
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
@@ -152,7 +111,6 @@ define([
             "partnerId": "508006007",
             "text": text,
             "sendnow": "true",
-            "newToken": newToken,
             "recipients": [
                        {
                            "Mobile":"{{InteractionDefaults.MobileNumber}}"
