@@ -105,6 +105,25 @@ define([
         });
     }
 
+    // Função para fazer a chamada à API e gerar o token OAuth
+    function gerarTokenOAuth() {
+    var urlLogin = "https://www.abinfo.pt/api/sms/auth/login";
+    var token = "YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE=";
+    var auth = "Bearer " + token;
+
+    return axios.get(urlLogin, {
+        headers: {
+            Authorization: auth
+        }
+    })
+    .then(response => {
+        return response.data.token;
+    })
+    .catch(error => {
+        throw error;
+    });
+}
+
     function onGetTokens(tokens) {
         console.log(tokens);
         authTokens = tokens;
