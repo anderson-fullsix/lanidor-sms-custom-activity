@@ -1,12 +1,12 @@
 'use strict';
-import axios from 'axios';
+//import axios from 'axios';
 
 define([
-    'postmonger',
-    'axios' // Importando o módulo axios para fazer a chamada HTTP
+    'postmonger'
+//    'axios' // Importando o módulo axios para fazer a chamada HTTP
 ], function (
-    Postmonger,
-    axios
+    Postmonger
+//    axios
 ) {
     var connection = new Postmonger.Session();
     var authTokens = {};
@@ -85,7 +85,7 @@ define([
         });
 
         // Chama a função para gerar o token OAuth
-        gerarTokenOAuth()
+/*        gerarTokenOAuth()
             .then(accessToken => {
                 console.log('Token OAuth gerado:', accessToken);
                 $('#accessToken').val(accessToken);
@@ -100,7 +100,7 @@ define([
                 console.error('Erro ao gerar token OAuth:', error);
                 // Trate o erro conforme necessário
             });
-
+*/
         connection.trigger('updateButton', {
             button: 'next',
             text: 'done',
@@ -109,6 +109,7 @@ define([
     }
 
     // Função para fazer a chamada à API e gerar o token OAuth
+/*
     function gerarTokenOAuth() {
     var urlLogin = "https://www.abinfo.pt/api/sms/auth/login";
     var token = "YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE=";
@@ -126,7 +127,7 @@ define([
         throw error;
     });
 }
-
+*/
     function onGetTokens(tokens) {
         console.log(tokens);
         authTokens = tokens;
