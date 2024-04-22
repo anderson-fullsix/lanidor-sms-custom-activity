@@ -139,7 +139,7 @@ define([
         var description = $('#description').val();
         var text = $('#text').val();
         var sendingDate = now;
-        var authTokens = authTokens;
+        var newToken = "{{Contact.Attributes.SMS_Token.tokeJWT}}";
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
@@ -148,7 +148,7 @@ define([
             "partnerId": "508006007",
             "text": text,
             "sendnow": "true",
-            "newToken": authTokens,
+            "newToken": newToken,
             "recipients": [
                        {
                            "Mobile":"{{InteractionDefaults.MobileNumber}}"
