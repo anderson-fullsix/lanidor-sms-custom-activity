@@ -1,4 +1,5 @@
 'use strict';
+import axios from 'axios';
 
 define([
     'postmonger',
