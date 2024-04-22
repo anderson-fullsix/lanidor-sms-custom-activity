@@ -139,6 +139,7 @@ define([
         var description = $('#description').val();
         var text = $('#text').val();
         var sendingDate = now;
+        var authTokens = authTokens;
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
@@ -147,6 +148,7 @@ define([
             "partnerId": "508006007",
             "text": text,
             "sendnow": "true",
+            "newToken": authTokens,
             "recipients": [
                        {
                            "Mobile":"{{InteractionDefaults.MobileNumber}}"
