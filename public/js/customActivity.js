@@ -1,9 +1,12 @@
+'use strict';
+
 define([
-    'postmonger'
+    'postmonger',
+    'axios' // Importando o módulo axios para fazer a chamada HTTP
 ], function (
-    Postmonger
+    Postmonger,
+    axios
 ) {
-    'use strict';
 
     var connection = new Postmonger.Session();
     var authTokens = {};
