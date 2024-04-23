@@ -18,10 +18,7 @@
                { "Contact.Key":"{{Contact.Key}}" },
                { "sender": "{{Contact.Default.SMS}}" },
                { "partnerId": "508006007" },
-               { "recipients": [
-                       {
-                           "Mobile":"{{Contact.Default.MobileNumber}}"
-                       }
+               { "Mobile":"{{Contact.Default.MobileNumber}}" }
                    ]
                }
            ],
