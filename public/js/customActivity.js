@@ -46,6 +46,8 @@ define([
         console.log(eventDefinitionModel);
     }
 
+    var eventDefinitionKey;
+    
     connection.on('requestedTriggerEventDefinition',
 function(eventDefinitionModel) {
     if(eventDefinitionModel){
