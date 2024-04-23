@@ -130,7 +130,7 @@ function(eventDefinitionModel) {
 payload['arguments'].execute.inArguments = [{
     "Mobile": "{{Contact.Attribute." + eventDefinitionKey + ".Mobile}}"
 }];
-        console.log("payload: " + payload[0].execute.inArguments[0].Mobile);
+        console.log("payload: " + payload['arguments'].execute.inArguments[0].Mobile);
         
         payload['metaData'].isConfigured = true;
 
