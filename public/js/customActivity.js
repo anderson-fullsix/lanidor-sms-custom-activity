@@ -112,20 +112,7 @@ define([
         console.log("mobile: " + mobile);
         var sendingDate = now;
         
-        payload['arguments'].execute.inArguments = [{
-            "id": id,
-            "description": description,
-//            "sender": "LANIDOR",
-            "sender": sender,
-            "partnerId": "508006007",
-            "text": text,
-            "sendnow": "true",
-            "recipients": [
-                       {
-                           "Mobile":"{{Contact.Default.SMS}}"
-                       }
-                   ]
-        }];
+
         
         payload['metaData'].isConfigured = true;
 
