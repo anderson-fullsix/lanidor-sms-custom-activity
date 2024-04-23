@@ -128,12 +128,8 @@ function(eventDefinitionModel) {
         var sendingDate = now;
         
 payload['arguments'].execute.inArguments = [{
-    "Mobile": "{{Contact.Attribute." + eventDefinitionKey + ".Mobile}}",
-    "Mobile2": "{{Contact.Default.SMS}}"
-}];
-        console.log("payload: " + payload['arguments'].execute.inArguments[0].Mobile);
-        console.log("payload: " + payload['arguments'].execute.inArguments[0].Mobile2);
-        
+    "Mobile": "{{Contact.Attribute." + eventDefinitionKey + ".Mobile}}"
+}];        
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
