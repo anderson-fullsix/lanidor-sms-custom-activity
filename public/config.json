@@ -15,10 +15,9 @@
     "arguments": {
         "execute": {
            "inArguments":[
-               { "Contact.Key":"{{Contact.Key}}" },
-               { "sender": "{{Contact.Default.SMS}}" },
-               { "partnerId": "508006007" },
-               { "Mobile":"{{Contact.Default.MobileNumber}}" }
+               { "sender": "{{Contact.Default.SMS}}"
+                 "partnerId": "508006007"
+                 "Mobile":"{{Contact.Default.MobileNumber}}" }
            ],
           "outArguments": [],
           "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/execute",
