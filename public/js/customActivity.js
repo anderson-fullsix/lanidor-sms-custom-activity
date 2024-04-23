@@ -116,7 +116,7 @@ define([
             "id": id,
             "description": description,
 //            "sender": "LANIDOR",
-            "sender": "{{Contact.Attribute.SMSJourney.sender}}",
+            "sender": sender,
             "partnerId": "508006007",
             "text": text,
             "sendnow": "true",
