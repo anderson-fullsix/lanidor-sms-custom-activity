@@ -99,11 +99,17 @@ define([
 
     function save() {
         let now = Date.now();
+        console.log("now: " + now);
         var id = $('#id').val();
+        console.log("id: " + id);
         var description = $('#description').val();
+        console.log("description: " + description);
         var text = $('#text').val();
+        console.log("text: " + text);
         var sender = $('#sender').val();
+        console.log("sender: " + sender);
         var mobile = $('#mobile').val();
+        console.log("mobile: " + mobile);
         var sendingDate = now;
         
         payload['arguments'].execute.inArguments = [{
