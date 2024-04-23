@@ -1,49 +1,33 @@
 define([
-    'postmonger'
+    'postmonger',
+    'jquery' // Add jQuery as a dependency
 ], function (
-    Postmonger
+    Postmonger,
+    $
 ) {
     'use strict';
 
     var connection = new Postmonger.Session();
-    var authTokens = {};
     var payload = {};
+
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
-    connection.on('requestedInteraction', onRequestedInteraction);
-    connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
     connection.on('requestedDataSources', onRequestedDataSources);
-
     connection.on('clickedNext', save);
-   
-    function onRender() {
-        // JB will respond the first time 'ready' is called with 'initActivity'
-        connection.trigger('ready');
 
+    function onRender() {
+        connection.trigger('ready');
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
-        connection.trigger('requestInteraction');
-        connection.trigger('requestTriggerEventDefinition');
-        connection.trigger('requestDataSources');  
-
+        connection.trigger('requestDataSources');
     }
 
-    function onRequestedDataSources(dataSources){
+    function onRequestedDataSources(dataSources) {
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
-    }
-
-    function onRequestedInteraction (interaction) {    
-        console.log('*** requestedInteraction ***');
-        console.log(interaction);
-     }
-
-     function onRequestedTriggerEventDefinition(eventDefinitionModel) {
-        console.log('*** requestedTriggerEventDefinition ***');
-        console.log(eventDefinitionModel);
     }
 
     function initialize(data) {
@@ -51,35 +35,6 @@ define([
         if (data) {
             payload = data;
         }
-        
-        var hasInArguments = Boolean(
-            payload['arguments'] &&
-            payload['arguments'].execute &&
-            payload['arguments'].execute.inArguments &&
-            payload['arguments'].execute.inArguments.length > 0
-        );
-
-        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-
-        console.log(inArguments);
-
-        $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
-
-                if (key === 'id') {
-                    $('#id').val(val);
-                }
-
-                if (key === 'description') {
-                    $('#description').val(val);
-                }
-
-                if (key === 'text') {
-                    $('#text').val(val);
-                }
-
-            });
-        });
 
         connection.trigger('updateButton', {
             button: 'next',
@@ -90,7 +45,6 @@ define([
 
     function onGetTokens(tokens) {
         console.log(tokens);
-        authTokens = tokens;
     }
 
     function onGetEndpoints(endpoints) {
@@ -98,27 +52,24 @@ define([
     }
 
     function save() {
-        let now = Date.now();
-        console.log("now: " + now);
+        // Retrieve and process form field values if necessary
+        // For example:
         var id = $('#id').val();
-        console.log("id: " + id);
         var description = $('#description').val();
-        console.log("description: " + description);
         var text = $('#text').val();
-        console.log("text: " + text);
         var sender = $('#sender').val();
-        console.log("sender: " + sender);
         var mobile = $('#mobile').val();
+        
+        // Log retrieved values for debugging
+        console.log("id: " + id);
+        console.log("description: " + description);
+        console.log("text: " + text);
+        console.log("sender: " + sender);
         console.log("mobile: " + mobile);
-        var sendingDate = now;
-        
 
-        
+        // Update activity payload if needed
         payload['metaData'].isConfigured = true;
-
         console.log(payload);
         connection.trigger('updateActivity', payload);
     }
-
-
 });
