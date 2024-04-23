@@ -16,11 +16,11 @@
         "execute": {
            "inArguments":[
                {
-                   "sender": "{{InteractionDefaults.sender}}",
+                   "sender": "{{Contact.Attribute.SMSJourney.sender}}",
                    "partnerId": "508006007",
                    "recipients": [
                        {
-                           "Mobile":"{{InteractionDefaults.MobileNumber}}"
+                           "Mobile":"{{Contact.MobileNumber}}"
                        }
                    ]
                }
