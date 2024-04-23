@@ -102,12 +102,14 @@ define([
         var id = $('#id').val();
         var description = $('#description').val();
         var text = $('#text').val();
+        var sender = $('#sender').val();
         var sendingDate = now;
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
             "description": description,
-            "sender": "LANIDOR",
+//            "sender": "LANIDOR",
+            "sender": sender,
             "partnerId": "508006007",
             "text": text,
             "sendnow": "true",
