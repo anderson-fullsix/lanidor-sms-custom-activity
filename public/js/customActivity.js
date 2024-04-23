@@ -127,7 +127,10 @@ function(eventDefinitionModel) {
         console.log("mobile: " + mobile);
         var sendingDate = now;
         
-
+payload['arguments'].execute.inArguments = [{
+    "Mobile": "{{Contact.Attribute." + eventDefinitionKey+".\"Mobile\"}}"
+}];
+        console.log("payload: " + payload);
         
         payload['metaData'].isConfigured = true;
 
