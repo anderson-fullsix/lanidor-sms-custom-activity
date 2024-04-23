@@ -16,7 +16,7 @@
         "execute": {
            "inArguments":[
                {
-                   "sender": "LANIDOR",
+                   "sender": "{{InteractionDefaults.sender}}",
                    "partnerId": "508006007",
                    "recipients": [
                        {
