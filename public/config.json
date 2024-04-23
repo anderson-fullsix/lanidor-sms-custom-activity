@@ -16,7 +16,7 @@
         "execute": {
            "inArguments":[
                {
-                   "sender": "{{Contact.Attribute.SMSJourney.sender}}",
+                   "sender": "{{Contact.Default.SMS}}",
                    "partnerId": "508006007",
                    "recipients": [
                        {
