@@ -98,7 +98,7 @@ define([
     }
 
     function save() {
-        var sender = $('#sender').val();
+        var sender = "{{Contact.Attribute.SMSJourney.sender}}";
         console.log("sender: " + sender);
         var partnerId = $('#partnerId').val();
         console.log("partnerId: " + partnerId);
