@@ -128,7 +128,7 @@ function(eventDefinitionModel) {
         var sendingDate = now;
         
 payload['arguments'].execute.inArguments = [{
-    "Mobile": "{{Contact.Attribute." + eventDefinitionKey+".\"Mobile\"}}"
+    "Mobile": "{{Contact.Attribute." + eventDefinitionKey + ".Mobile}}"
 }];
         console.log("payload: " + JSON.stringify(payload));
         
