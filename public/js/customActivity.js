@@ -104,16 +104,6 @@ define([
         console.log("partnerId: " + partnerId);
         var mobile = $('#mobile').val();
         console.log("mobile: " + mobile);
-
-        payload['arguments'].execute.inArguments = [{
-            "sender": sender,
-            "partnerId": partnerId,
-            "recipients": [
-                       {
-                           "Mobile": mobile
-                       }
-                   ]
-        }];
         
         payload['metaData'].isConfigured = true;
 
