@@ -134,7 +134,7 @@ payload['arguments'].execute.inArguments = [{
         
         payload['metaData'].isConfigured = true;
 
-        console.log(payload);
+        console.log("payload: " + payload[0].Mobile);
         connection.trigger('updateActivity', payload);
     }
 
