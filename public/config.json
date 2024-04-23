@@ -15,10 +15,13 @@
     "arguments": {
         "execute": {
            "inArguments":[
-               {
-                 "sender": "{{Contact.Default.SMS}}"
-                 "partnerId": "508006007"
-                 "Mobile":"{{Contact.Default.MobileNumber}}"
+               { "sender": "{{Contact.Default.SMS}}",
+                 "partnerId": "508006007",
+                 "recipients": [
+                       {
+                           "Mobile":"{{Contact.Default.MobileNumber}}"
+                       }
+                   ]
                }
            ],
           "outArguments": [],
