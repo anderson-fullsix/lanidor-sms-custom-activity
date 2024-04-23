@@ -46,21 +46,6 @@ define([
         console.log(eventDefinitionModel);
     }
 
-    var eventDefinitionKey;
-    
-    connection.on('requestedTriggerEventDefinition',
-function(eventDefinitionModel) {
-    if(eventDefinitionModel){
-
-        eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-        console.log(">>>Event Definition Key " + eventDefinitionKey);
-        /*If you want to see all*/
-        console.log('>>>Request Trigger', 
-        JSON.stringify(eventDefinitionModel));
-    }
-
-});
-
     function initialize(data) {
         console.log(data);
         if (data) {
@@ -114,24 +99,30 @@ function(eventDefinitionModel) {
 
     function save() {
         let now = Date.now();
-        console.log("now: " + now);
         var id = $('#id').val();
-        console.log("id: " + id);
         var description = $('#description').val();
-        console.log("description: " + description);
         var text = $('#text').val();
-        console.log("text: " + text);
         var sender = $('#sender').val();
-        console.log("sender: " + sender);
         var mobile = $('#mobile').val();
-        console.log("mobile: " + mobile);
         var sendingDate = now;
         
-payload['arguments'].execute.inArguments = [{
-    "Mobile": "{{Contact.Attribute." + eventDefinitionKey + ".Mobile}}"
-}];        
+        payload['arguments'].execute.inArguments = [{
+            "id": id,
+            "description": description,
+            "sender": "LANIDOR",
+            "partnerId": "508006007",
+            "text": text,
+            "sendnow": "true",
+            "recipients": [
+                       {
+                           "Mobile":"{{Contact.Default.SMS}}"
+                       }
+                   ]
+        }];
+        
         payload['metaData'].isConfigured = true;
 
+        console.log(payload);
         connection.trigger('updateActivity', payload);
     }
 
