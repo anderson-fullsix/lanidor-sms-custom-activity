@@ -103,6 +103,7 @@ define([
         var description = $('#description').val();
         var text = $('#text').val();
         var sender = $('#sender').val();
+        var mobile = $('#mobile').val();
         var sendingDate = now;
         
         payload['arguments'].execute.inArguments = [{
@@ -115,7 +116,7 @@ define([
             "sendnow": "true",
             "recipients": [
                        {
-                           "Mobile":"{{InteractionDefaults.MobileNumber}}"
+                           "Mobile":"{{Contact.Default.SMS}}"
                        }
                    ]
         }];
