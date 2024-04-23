@@ -15,7 +15,9 @@
     "arguments": {
         "execute": {
            "inArguments":[
+               { "Contact.Key":"{{Contact.Key}}" },
                {
+                   
                    "sender": "{{Contact.Default.SMS}}",
                    "partnerId": "508006007",
                    "recipients": [
