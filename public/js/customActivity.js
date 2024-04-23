@@ -98,31 +98,19 @@ define([
     }
 
     function save() {
-        let now = Date.now();
-        console.log("now: " + now);
-        var id = $('#id').val();
-        console.log("id: " + id);
-        var description = $('#description').val();
-        console.log("description: " + description);
-        var text = $('#text').val();
-        console.log("text: " + text);
         var sender = $('#sender').val();
         console.log("sender: " + sender);
+        var partnerId = $('#partnerId').val();
+        console.log("partnerId: " + partnerId);
         var mobile = $('#mobile').val();
         console.log("mobile: " + mobile);
-        var sendingDate = now;
-        
+
         payload['arguments'].execute.inArguments = [{
-            "id": id,
-            "description": description,
-//            "sender": "LANIDOR",
-            "sender": "{{Contact.Attribute.SMSJourney.sender}}",
-            "partnerId": "508006007",
-            "text": text,
-            "sendnow": "true",
+            "sender": sender,
+            "partnerId": partnerId,
             "recipients": [
                        {
-                           "Mobile":"{{Contact.Default.SMS}}"
+                           "Mobile": mobile
                        }
                    ]
         }];
