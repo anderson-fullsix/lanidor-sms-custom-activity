@@ -47,7 +47,7 @@ define([
     }
 
     function initialize(data) {
-        console.log(data);
+        console.log("data: " + data);
         if (data) {
             payload = data;
         }
@@ -60,6 +60,7 @@ define([
         );
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+
 
         console.log(inArguments);
 
@@ -80,9 +81,6 @@ define([
 
             });
         });
-		
-	var mobileValue = arguments.recipients[0].Mobile;
-        console.log('Mobile value:', mobileValue);
 		
         connection.trigger('updateButton', {
             button: 'next',
