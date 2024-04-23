@@ -21,6 +21,7 @@
                { "Mobile":"{{Contact.Default.MobileNumber}}" }
                    ]
                }
+    }
            ],
           "outArguments": [],
           "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/execute",
