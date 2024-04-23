@@ -6,125 +6,30 @@ define([
     'use strict';
 
     var connection = new Postmonger.Session();
-    var authTokens = {};
-    var payload = {};
-    $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
-    connection.on('requestedTokens', onGetTokens);
-    connection.on('requestedEndpoints', onGetEndpoints);
-    connection.on('requestedInteraction', onRequestedInteraction);
-    connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
-    connection.on('requestedDataSources', onRequestedDataSources);
-
-    connection.on('clickedNext', save);
-   
-    function onRender() {
-        // JB will respond the first time 'ready' is called with 'initActivity'
-        connection.trigger('ready');
-
-        connection.trigger('requestTokens');
-        connection.trigger('requestEndpoints');
-        connection.trigger('requestInteraction');
-        connection.trigger('requestTriggerEventDefinition');
-        connection.trigger('requestDataSources');  
-
-    }
-
-    function onRequestedDataSources(dataSources){
-        console.log('*** requestedDataSources ***');
-        console.log(dataSources);
-    }
-
-    function onRequestedInteraction (interaction) {    
-        console.log('*** requestedInteraction ***');
-        console.log(interaction);
-     }
-
-     function onRequestedTriggerEventDefinition(eventDefinitionModel) {
-        console.log('*** requestedTriggerEventDefinition ***');
-        console.log(eventDefinitionModel);
-    }
 
     function initialize(data) {
         console.log(data);
-        if (data) {
-            payload = data;
+
+        // Check if 'Event' data is available
+        if (data && data['arguments'] && data['arguments'].execute && data['arguments'].execute.inArguments) {
+            var inArguments = data['arguments'].execute.inArguments;
+
+            // Check if the 'Event' data contains the mobile field
+            for (var i = 0; i < inArguments.length; i++) {
+                var argument = inArguments[i];
+                if (argument.recipients && argument.recipients[0] && argument.recipients[0].Mobile) {
+                    var mobileValue = argument.recipients[0].Mobile;
+                    console.log('Mobile value:', mobileValue);
+                }
+            }
         }
-        
-        var hasInArguments = Boolean(
-            payload['arguments'] &&
-            payload['arguments'].execute &&
-            payload['arguments'].execute.inArguments &&
-            payload['arguments'].execute.inArguments.length > 0
-        );
 
-        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-
-        console.log(inArguments);
-
-        $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
-
-                if (key === 'id') {
-                    $('#id').val(val);
-                }
-
-                if (key === 'description') {
-                    $('#description').val(val);
-                }
-
-                if (key === 'text') {
-                    $('#text').val(val);
-                }
-
-            });
-        });
-
-        connection.trigger('updateButton', {
-            button: 'next',
-            text: 'done',
-            visible: true
-        });
+        // Once initialization is complete, signal that the activity is ready
+        connection.trigger('ready');
     }
 
-    function onGetTokens(tokens) {
-        console.log(tokens);
-        authTokens = tokens;
-    }
-
-    function onGetEndpoints(endpoints) {
-        console.log(endpoints);
-    }
-
-    function save() {
-        let now = Date.now();
-        var id = $('#id').val();
-        var description = $('#description').val();
-        var text = $('#text').val();
-        var sender = $('#sender').val();
-        var mobile = $('#mobile').val();
-        var sendingDate = now;
-        
-        payload['arguments'].execute.inArguments = [{
-            "id": id,
-            "description": description,
-            "sender": "LANIDOR",
-            "partnerId": "508006007",
-            "text": text,
-            "sendnow": "true",
-            "recipients": [
-                       {
-                           "Mobile":"{{Contact.Default.SMS}}"
-                       }
-                   ]
-        }];
-        
-        payload['metaData'].isConfigured = true;
-
-        console.log(payload);
-        connection.trigger('updateActivity', payload);
-    }
-
-
+    // Return the connection object to make it available for other modules
+    return connection;
 });
