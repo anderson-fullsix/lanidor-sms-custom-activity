@@ -81,7 +81,7 @@ define([
             });
         });
 		
-		var mobileValue = argument.recipients[0].Mobile;
+	var mobileValue = arguments.recipients[0].Mobile;
         console.log('Mobile value:', mobileValue);
 		
         connection.trigger('updateButton', {
