@@ -103,22 +103,17 @@ define([
         var id = $('#id').val();
         var description = $('#description').val();
         var text = $('#text').val();
-        var sender = $('#sender').val();
-        var mobile = $('#mobile').val();
         var sendingDate = now;
         
         payload['arguments'].execute.inArguments = [{
             "id": id,
             "description": description,
-            "sender": "LANIDOR",
-            "partnerId": "508006007",
             "text": text,
+            "sender": "{{Contact.Attribute.SMSJourney.sender}}",
+            "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
             "sendnow": "true",
-            "recipients": [
-                       {
-                           "Mobile":"{{Contact.Default.SMS}}"
-                       }
-                   ]
+            "recipients": 
+		[{ "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}" }]
         }];
         
         payload['metaData'].isConfigured = true;
