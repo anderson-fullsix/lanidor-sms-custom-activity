@@ -15,13 +15,11 @@
     "arguments": {
         "execute": {
            "inArguments":[
-               { "sender": "{{Event.SMSJourney.sender}}",
-                 "partnerId": "508006007",
-                 "recipients": [
-                       {
-                           "Mobile":"{{Contact.Default.SMS}}"
-                       }
-                   ]
+               {
+                   "sender": "{{Contact.Attribute.SMSJourney.sender}}",
+                   "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
+                   "sendingDate": "{{Contact.Attribute.SMSJourney.sendingDate}}",
+                   "mobile": "{{Contact.Attribute.SMSJourney.Mobile}}"
                }
            ],
           "outArguments": [],
