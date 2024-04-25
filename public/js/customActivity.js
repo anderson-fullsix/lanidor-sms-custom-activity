@@ -47,7 +47,7 @@ define([
     }
 
     function initialize(data) {
-        console.log("1: " + data);
+        console.log(data);
         if (data) {
             payload = data;
         }
@@ -62,7 +62,7 @@ define([
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
 
-        console.log("2: " + inArguments);
+        console.log(inArguments);
 
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
