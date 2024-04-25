@@ -105,16 +105,7 @@ define([
         var text = $('#text').val();
         var sendingDate = now;
         
-        payload['arguments'].execute.inArguments = [{
-            "id": id,
-            "description": description,
-            "text": text,
-            "sender": "{{Contact.Attribute.SMSJourney.sender}}",
-            "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
-            "sendnow": "true",
-            "recipients": 
-		[{ "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}" }]
-        }];
+
         
         payload['metaData'].isConfigured = true;
 
