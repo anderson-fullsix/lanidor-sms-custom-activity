@@ -47,7 +47,7 @@ define([
     }
 
     function initialize(data) {
-        console.log(data);
+        console.log("1: " + data);
         if (data) {
             payload = data;
         }
