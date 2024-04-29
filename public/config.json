@@ -26,7 +26,7 @@
           "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
-            "header": "",
+            "header": "{\"Authorization\":\"Bearer YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE=\"}",
             "format": "json",
             "useJwt": true,
             "timeout": 10000
