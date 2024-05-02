@@ -98,7 +98,7 @@ define([
 
 	//Code to request tokens
 	const authData = {
-		username: 'AAA'.
+		username: 'AAA',
 		password: 'BBB'
     	};
 
