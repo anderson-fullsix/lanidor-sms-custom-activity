@@ -95,7 +95,55 @@ define([
     function onGetTokens(tokens) {
         console.log(tokens);
         authTokens = tokens;
+
+	//Code to request tokens
+	const authData = {
+		username: 'AAA'.
+		password: 'BBB'
+    	};
+
+	// Make a request to your authentication endpoint to get the token
+  	fetch('https://www.abinfo.pt/api/sms/auth/login', {
+		method: 'GET',
+		headers: {
+			'Authorization': `Basic ${btoa(`${authData.username}:${authData.password}`)}`
+		}
+	})
+  .then(response => response.json())
+  .then(data => {
+    // Use the token for subsequent requests
+    const token = data.token;
+    tokens.resolve(token);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    tokens.reject(error);
+  });
     }
+
+connection.on('execute', function(events) {
+  // Execute the activity
+  const token = events.token;
+
+  // Make a request to your endpoint using the token
+  fetch('https://your-other-endpoint.com/sendPayload', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+    connection.trigger('success');
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    connection.trigger('fail');
+  });
+});
 
     function onGetEndpoints(endpoints) {
         console.log(endpoints);
