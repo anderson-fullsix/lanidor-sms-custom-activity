@@ -70,13 +70,13 @@ define([
 
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-
-	payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
-        console.log('*** payload0 ***');
-        console.log(payload);
+		
+	    payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
+            console.log('*** payload0 ***');
+            console.log(payload);
 	    
-        $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
+            $.each(inArguments, function (index, inArgument) {
+    	        $.each(inArgument, function (key, val) {
 
                 if (key === 'id') {
                     $('#id').val(val);
@@ -101,7 +101,7 @@ define([
             text: 'done',
             visible: true
         });
-    }
+    });
 
 
     function onGetTokens(tokens) {
