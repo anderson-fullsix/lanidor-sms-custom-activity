@@ -158,11 +158,6 @@ connection.on('execute', function(events) {
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
 	    
-        let now = Date.now();
-        var id = $('#id').val();
-        var description = $('#description').val();
-        var text = $('#text').val();
-        var sendingDate = now;
 
 
 	payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
@@ -171,6 +166,4 @@ connection.on('execute', function(events) {
 
         console.log(payload);
         connection.trigger('updateActivity', payload);
-
-
-});
+	}
