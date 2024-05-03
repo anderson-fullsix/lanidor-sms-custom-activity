@@ -157,6 +157,7 @@ connection.on('execute', function(events) {
 
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+	    
 
 
 	payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
@@ -167,3 +168,4 @@ connection.on('execute', function(events) {
         connection.trigger('updateActivity', payload);
 	}
 }
+})
