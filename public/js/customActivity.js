@@ -151,6 +151,13 @@ connection.on('execute', function(events) {
     }
 
     function save() {
+        var eventDefinitionKey;
+
+        connection.trigger('requestTriggerEventDefinition');
+
+        connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
+            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+	    
         let now = Date.now();
         var id = $('#id').val();
         var description = $('#description').val();
@@ -159,8 +166,8 @@ connection.on('execute', function(events) {
         
 
 
-	payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}'
-        
+	payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
+
         payload['metaData'].isConfigured = true;
 
         console.log(payload);
