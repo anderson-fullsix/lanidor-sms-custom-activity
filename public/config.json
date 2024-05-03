@@ -19,7 +19,7 @@
                    "sender": "{{Contact.Attribute.SMSJourney.sender}}",
                    "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
                    "sendingDate": "{{Contact.Attribute.SMSJourney.sendingDate}}",
-                   "mobile": "{{Contact.Attribute.SMSJourney.Mobile}}"
+                   "mobile": "{{Event.' + eventDefinitionKey + '.Mobile}}"
                }
            ],
           "outArguments": [],
