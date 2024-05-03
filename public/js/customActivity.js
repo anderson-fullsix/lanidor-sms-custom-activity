@@ -103,7 +103,8 @@ define([
     	};
 
 	// Make a request to your authentication endpoint to get the token
-  	fetch('https://www.abinfo.pt/api/sms/auth/login', {
+	const authURL = 'https://www.abinfo.pt/api/sms/auth/login'
+  	fetch(authURL, {
 		method: 'GET',
 		headers: {
 			'Authorization': `Basic ${btoa(`${authData.username}:${authData.password}`)}`
