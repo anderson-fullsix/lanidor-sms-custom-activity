@@ -101,7 +101,7 @@ define([
             text: 'done',
             visible: true
         });
-    }
+    });
 
     function onGetTokens(tokens) {
         console.log(tokens);
