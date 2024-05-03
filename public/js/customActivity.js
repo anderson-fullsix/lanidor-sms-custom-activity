@@ -127,6 +127,7 @@ define([
 	    	.then(response => response.json())
 		.then(data => {
 	            // Use the token for subsequent requests
+		    console.log('*** ongettokens ***');
 		    authToken = data.token;
 		    tokens.resolve(authToken);
 	        })
@@ -156,6 +157,7 @@ define([
   	    })
   	    .then(response => response.json())
   	    .then(data => {
+		console.log('*** execute ***');
     		console.log('Success:', data);
     	    	connection.trigger('success');
   	    })
@@ -167,6 +169,7 @@ define([
     }
 
     function onGetEndpoints(endpoints) {
+	console.log('*** endpoints ***');
         console.log(endpoints);
     }
 
