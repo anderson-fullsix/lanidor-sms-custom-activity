@@ -163,7 +163,6 @@ connection.on('execute', function(events) {
         var description = $('#description').val();
         var text = $('#text').val();
         var sendingDate = now;
-        
 
 
 	payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
@@ -172,7 +171,6 @@ connection.on('execute', function(events) {
 
         console.log(payload);
         connection.trigger('updateActivity', payload);
-    })
 
 
 });
