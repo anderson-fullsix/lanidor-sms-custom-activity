@@ -164,6 +164,7 @@ connection.on('execute', function(events) {
 
         payload['metaData'].isConfigured = true;
 
+        console.log('*** payload ***');
         console.log(payload);
         connection.trigger('updateActivity', payload);
 
