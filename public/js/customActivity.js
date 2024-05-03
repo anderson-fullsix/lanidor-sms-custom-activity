@@ -80,17 +80,14 @@ define([
 
                     if (key === 'id') {
                     	$('#id').val(val);
-			console.log(id);
                     }
 
         	    if (key === 'description') {
                     	$('#description').val(val);
-			console.log(description);
                     }
 
                     if (key === 'text') {
                     	$('#text').val(val);
-			console.log(text);
                     }
 
             	});
