@@ -104,7 +104,12 @@ define([
 
 	// Make a request to your authentication endpoint to get the token
 	const authURL = 'https://www.abinfo.pt/api/sms/auth/login'
-  	fetch(authURL)
+  	fetch(authURL, {
+		method: 'GET',
+		headers: {
+			'Authorization': `Basic YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE=`
+		}
+	})
   .then(response => response.json())
   .then(data => {
     // Use the token for subsequent requests
