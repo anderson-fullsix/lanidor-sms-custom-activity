@@ -78,30 +78,31 @@ define([
             $.each(inArguments, function (index, inArgument) {
     	        $.each(inArgument, function (key, val) {
 
-                if (key === 'id') {
-                    $('#id').val(val);
+                    if (key === 'id') {
+                    	$('#id').val(val);
 			console.log(id);
-                }
+                    }
 
-                if (key === 'description') {
-                    $('#description').val(val);
+        	    if (key === 'description') {
+                    	$('#description').val(val);
 			console.log(description);
-                }
+                    }
 
-                if (key === 'text') {
-                    $('#text').val(val);
+                    if (key === 'text') {
+                    	$('#text').val(val);
 			console.log(text);
-                }
+                    }
 
+            	});
             });
-        });
 		
-        connection.trigger('updateButton', {
-            button: 'next',
-            text: 'done',
-            visible: true
-        });
-    });
+            connection.trigger('updateButton', {
+            	button: 'next',
+	            text: 'done',
+        	    visible: true
+            });
+	});
+    }
 
 
     function onGetTokens(tokens) {
