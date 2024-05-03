@@ -61,9 +61,20 @@ define([
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-
+        console.log('*** inArguments ***');
         console.log(inArguments);
 
+        var eventDefinitionKey;
+
+        connection.trigger('requestTriggerEventDefinition');
+
+        connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
+            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+
+	payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
+        console.log('*** payload0 ***');
+        console.log(payload);
+	    
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
 
@@ -151,16 +162,22 @@ connection.on('execute', function(events) {
     }
 
     function save() {
-        var eventDefinitionKey;
-
-        connection.trigger('requestTriggerEventDefinition');
-
-        connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
-            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-	    
-
-
-	payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
+        let now = Date.now();
+        var id = $('#id').val();
+        var description = $('#description').val();
+        var text = $('#text').val();
+        var sendingDate = now;
+        
+        payload['arguments'].execute.inArguments = [{
+            "id": id,
+            "description": description,
+            "text": text,
+            "sender": "{{Contact.Attribute.SMSJourney.sender}}",
+            "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
+            "sendnow": "true",
+            "recipients": 
+		[{ "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}" }]
+        }];
 
         payload['metaData'].isConfigured = true;
 
