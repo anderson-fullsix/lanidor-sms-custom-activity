@@ -105,6 +105,7 @@ define([
     }
 
     function onGetTokens(tokens) {
+	console.log('*** tokens ***');
         console.log(tokens);
         authTokens = tokens;
 
