@@ -149,7 +149,7 @@ define([
     	    	method: 'POST',
     	    	body: JSON.stringify(payload),
     	    	headers: {
-      		    'Authorization': `Bearer ${token}`,
+      		    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Ijc2YjM5ODM3LWJkNDMtNDc0NC04N2M3LTAyMWMyZDc1NGM4NSIsIm5iZiI6MTcxNDcxMjU0NCwiZXhwIjoxNzE0NzEzNDQ0LCJpYXQiOjE3MTQ3MTI1NDR9.64alMPXdWXM4oWU0QUh-t8nBDJ5rHasEj0Zx36oXszk`,
       		    'Content-Type': 'application/json'
     	    	}
   	    })
