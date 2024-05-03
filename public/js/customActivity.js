@@ -172,7 +172,7 @@ connection.on('execute', function(events) {
 
         console.log(payload);
         connection.trigger('updateActivity', payload);
-    }
+    })
 
 
 });
