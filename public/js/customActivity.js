@@ -101,6 +101,7 @@ define([
             text: 'done',
             visible: true
         });
+    }
 
 
     function onGetTokens(tokens) {
@@ -121,41 +122,17 @@ define([
 			'Authorization': `Basic YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE=`
 		}
 	})
-  .then(response => response.json())
-  .then(data => {
-    // Use the token for subsequent requests
-    const token = data.token;
-    tokens.resolve(token);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    tokens.reject(error);
-  });
+	.then(response => response.json())
+	.then(data => {
+	// Use the token for subsequent requests
+		const token = data.token;
+		tokens.resolve(token);
+	})
+	.catch(error => {
+		console.error('Error:', error);
+		tokens.reject(error);
+	});
     }
-
-connection.on('execute', function(events) {
-  // Execute the activity
-  const token = events.token;
-
-  // Make a request to your endpoint using the token
-  fetch('https://your-other-endpoint.com/sendPayload', {
-    method: 'POST',
-    body: JSON.stringify(payload),
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
-    connection.trigger('success');
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    connection.trigger('fail');
-  });
-});
 
     function onGetEndpoints(endpoints) {
         console.log(endpoints);
@@ -185,6 +162,5 @@ connection.on('execute', function(events) {
         console.log(payload);
         connection.trigger('updateActivity', payload);
 
-	}
-}
+    }
 })
