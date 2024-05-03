@@ -104,35 +104,66 @@ define([
 	});
     }
 
-
     function onGetTokens(tokens) {
         console.log(tokens);
         authTokens = tokens;
 
-	//Code to request tokens
-	const authData = {
-		username: 'AAA',
-		password: 'BBB'
-    	};
+	connection.on('requestedTokens', function(tokens) {
+	    //Code to request tokens
+	    if (!authToken) {
+	    	const authData = {
+		    username: 'AAA',
+		    password: 'BBB'
+    	    	};
 
-	// Make a request to your authentication endpoint to get the token
-	const authURL = 'https://www.abinfo.pt/api/sms/auth/login'
-  	fetch(authURL, {
-		method: 'GET',
-		headers: {
+	        // Make a request to your authentication endpoint to get the token
+	        const authURL = 'https://www.abinfo.pt/api/sms/auth/login'
+  	        fetch(authURL, {
+		    method: 'GET',
+		    headers: {
 			'Authorization': `Basic YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE=`
-		}
-	})
-	.then(response => response.json())
-	.then(data => {
-	// Use the token for subsequent requests
-		const token = data.token;
-		tokens.resolve(token);
-	})
-	.catch(error => {
-		console.error('Error:', error);
-		tokens.reject(error);
+		    }
+	    	})
+	    	.then(response => response.json())
+		.then(data => {
+	            // Use the token for subsequent requests
+		    authToken = data.token;
+		    tokens.resolve(authToken);
+	        })
+	    	.catch(error => {
+		    console.error('Error:', error);
+		    tokens.reject(error);
+	    	});
+            } else {
+		// Token already obtained, resolve immediately
+		tokens.resolve(authToken);
+	    }
 	});
+
+	connection.on('execute', function(events) {
+	    // Execute the activity
+  	    const token = events.token;
+
+	    // Use the token obtained earlier
+	    const commURL = 'https://www.abinfo.pt/api/sms/communications'
+  	    fetch(commURL, {
+    	    	method: 'POST',
+    	    	body: JSON.stringify(payload),
+    	    	headers: {
+      		    'Authorization': `Bearer ${token}`,
+      		    'Content-Type': 'application/json'
+    	    	}
+  	    })
+  	    .then(response => response.json())
+  	    .then(data => {
+    		console.log('Success:', data);
+    	    	connection.trigger('success');
+  	    })
+  	    .catch(error => {
+    		console.error('Error:', error);
+    	    	connection.trigger('fail');
+  	    });
+        });
     }
 
     function onGetEndpoints(endpoints) {
