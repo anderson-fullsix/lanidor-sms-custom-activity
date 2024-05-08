@@ -84,14 +84,10 @@ require('dotenv').config();
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
 
-            const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
 const raw = "Teste";
 
 const requestOptions = {
   method: "POST",
-  headers: myHeaders,
   body: raw,
   redirect: "follow"
 };
