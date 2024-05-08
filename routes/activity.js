@@ -6,6 +6,7 @@ const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
+const axios = require('axios');
 
 exports.logExecuteData = [];
 
@@ -90,10 +91,17 @@ require('dotenv').config();
   redirect: "follow"
 };
 
-fetch("https://enickt5gs0alo.x.pipedream.net", requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
+axios.get('https://enickt5gs0alo.x.pipedream.net')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+            
+
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
