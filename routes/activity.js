@@ -84,11 +84,9 @@ require('dotenv').config();
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
 
-const raw = "Teste";
-
-const requestOptions = {
+  const requestOptions = {
   method: "POST",
-  body: raw,
+  body: "teste",
   redirect: "follow"
 };
 
