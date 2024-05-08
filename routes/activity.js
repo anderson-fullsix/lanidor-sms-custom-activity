@@ -119,12 +119,11 @@ axios.request(config)
   console.log("token interno: ", token)
 
   let data = JSON.stringify({
-  "id": "129.13",
+  "id": "020",
   "description": "Mensagem de teste",
   "sender": "LASENDER",
-  "partnerId": "123456789",
+  "partnerId": "508006007",
   "text": "mensagem de sms a ser enviada para teste de integração!",
-  "sendingDate": "2023-09-30T12:25:00",
   "recipients": [
     {
       "Mobile": "+3519100000000"
