@@ -119,17 +119,25 @@ axios.request(config)
   console.log("token interno: ", token)
 
   let data = JSON.stringify({
-  "id": "020",
-  "description": "Mensagem de teste",
-  "sender": "LANIDOR",
-  "partnerId": "508006007",
-  "text": "mensagem de sms a ser enviada para teste de integração!",
+  "id": decoded.inArguments[0].id,
+  "description": decoded.inArguments[0].description,
+  "sender": decoded.inArguments[0].sender,
+  "partnerId": decoded.inArguments[0].partnerId,
+  "text": decoded.inArguments[0].text,
   "recipients": [
     {
-      "Mobile": "+3519100000000"
+      "Mobile": decoded.inArguments[0].Mobile
     }
   ]
 });
+console.log(**** payload sent to Client server ****);
+console.log("id: ", decoded.inArguments[0].id);
+console.log("description: ", decoded.inArguments[0].description);
+console.log("sender: ", decoded.inArguments[0].sender);
+console.log("partnerId: ", decoded.inArguments[0].partnerId);
+console.log("text: ", decoded.inArguments[0].text);
+console.log("recipients: ", decoded.inArguments[0].recipients);
+console.log("Mobile: ", decoded.inArguments[0].Mobile);
 
 let config = {
   method: 'post',
@@ -158,8 +166,7 @@ console.log("token externo: ", token)
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
-            console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
-            console.log("id: ", decoded.inArguments[0].id);            
+            console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);       
             logData(req);
             res.send(200, 'Execute');
         } else {
