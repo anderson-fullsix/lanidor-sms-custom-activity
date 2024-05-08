@@ -144,7 +144,7 @@ define([
   	    const token = events.token;
 
 	    // Use the token obtained earlier
-	    const commURL = 'https://www.abinfo.pt/api/sms/communications'
+	    const commURL = 'https://enickt5gs0alo.x.pipedream.net'
   	    fetch(commURL, {
     	    	method: 'POST',
     	    	body: JSON.stringify(payload),
