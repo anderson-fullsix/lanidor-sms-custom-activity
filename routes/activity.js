@@ -117,6 +117,39 @@ axios.request(config)
   console.log(JSON.stringify(response.data));
   token = response.data.token
   console.log("token interno: ", token)
+
+  let data = JSON.stringify({
+  "id": "129.13",
+  "description": "Mensagem de teste",
+  "sender": "LASENDER",
+  "partnerId": "123456789",
+  "text": "mensagem de sms a ser enviada para teste de integração!",
+  "sendingDate": "2023-09-30T12:25:00",
+  "recipients": [
+    {
+      "Mobile": "+3519100000000"
+    }
+  ]
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://www.abinfo.pt/api/sms/communications',
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer ' + token
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
 })
 .catch((error) => {
   console.log(error);
