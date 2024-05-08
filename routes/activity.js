@@ -158,7 +158,8 @@ console.log("token externo: ", token)
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
-            console.log("decoded.inArguments[0]: ", decoded.inArguments[0])
+            console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
+            console.log("id: ", decoded.inArguments[0].id);            
             logData(req);
             res.send(200, 'Execute');
         } else {
