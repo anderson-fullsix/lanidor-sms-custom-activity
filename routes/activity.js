@@ -83,6 +83,23 @@ exports.execute = function (req, res) {
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+
+            const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+const raw = "Teste";
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://enickt5gs0alo.x.pipedream.net", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
