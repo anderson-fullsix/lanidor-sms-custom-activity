@@ -130,7 +130,7 @@ axios.request(config)
     }
   ]
 });
-console.log(**** payload sent to Client server ****);
+console.log("**** payload sent to Client server ****");
 console.log("id: ", decoded.inArguments[0].id);
 console.log("description: ", decoded.inArguments[0].description);
 console.log("sender: ", decoded.inArguments[0].sender);
