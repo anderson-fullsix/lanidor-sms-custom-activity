@@ -121,7 +121,7 @@ axios.request(config)
   let data = JSON.stringify({
   "id": "020",
   "description": "Mensagem de teste",
-  "sender": "LASENDER",
+  "sender": "LANIDOR",
   "partnerId": "508006007",
   "text": "mensagem de sms a ser enviada para teste de integração!",
   "recipients": [
