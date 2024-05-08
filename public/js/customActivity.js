@@ -108,6 +108,7 @@ define([
 
 	connection.on('requestedTokens', function(tokens) {
 	    //Code to request tokens
+	    /*
 	    if (!authToken) {
 	    	const authData = {
 		    username: 'AAA',
@@ -137,6 +138,7 @@ define([
 		// Token already obtained, resolve immediately
 		tokens.resolve(authToken);
 	    }
+	*/
 	});
 
 	connection.on('execute', function(events) {
