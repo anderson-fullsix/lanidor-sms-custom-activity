@@ -84,7 +84,7 @@ require('dotenv').config();
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-
+/*
   const requestOptions = {
   method: "POST",
   body: "teste",
@@ -100,8 +100,29 @@ axios.get('https://enickt5gs0alo.x.pipedream.net')
     // handle error
     console.log(error);
   })
-            
+ */           
+var token = null
+let config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://www.abinfo.pt/api/sms/auth/login',
+  headers: { 
+    'Authorization': 'Basic YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE='
+  },
+  data : ""
+};
 
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+  token = response.data.token
+  console.log("token interno: ", token)
+})
+.catch((error) => {
+  console.log(error);
+});
+
+console.log("token externo: ", token)
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
