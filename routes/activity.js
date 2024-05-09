@@ -124,7 +124,6 @@ axios.request(config)
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
-  "mobile": decoded.inArguments[0].mobile,
   "recipients": decoded.inArguments[0].recipients
 /*  "recipients": [
     {
@@ -139,7 +138,6 @@ console.log("description: ", decoded.inArguments[0].description);
 console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
-console.log("mobile": decoded.inArguments[0].mobile);
 console.log("recipients: ", decoded.inArguments[0].recipients);
 
 let config = {
