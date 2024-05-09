@@ -16,8 +16,8 @@
         "execute": {
            "inArguments":[
                {
-                   "sender": '{{Event." + eventDefinitionKey + ".sender}}',
-                   "partnerId": '{{Event." + eventDefinitionKey + ".partnerId}}',
+                   "sender": "{{Event." + eventDefinitionKey + ".sender}}",
+                   "partnerId": "{{Event." + eventDefinitionKey + ".partnerId}}",
                    "sendingDate": "{{Contact.Attribute.SMSJourney.sendingDate}}",
                    "mobile": "{{Contact.Default.SMS}}"
                }
