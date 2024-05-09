@@ -125,6 +125,7 @@ axios.request(config)
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
   "recipients": decoded.inArguments[0].recipients
+  "mobile": decoded.inArguments[0].mobile
 /*  "recipients": [
     {
       "Mobile": decoded.inArguments[0].Mobile
