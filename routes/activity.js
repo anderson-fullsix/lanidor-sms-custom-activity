@@ -124,6 +124,7 @@ axios.request(config)
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
+  "sendnow": "true",
   "recipients": decoded.inArguments[0].recipients
 /*  "recipients": [
     {
