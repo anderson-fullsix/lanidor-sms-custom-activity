@@ -154,14 +154,14 @@ let config = {
 
 axios.request(config)
 .then((response) => {
-  console.log(JSON.stringify(response.data));
+  console.log("JSON stringify: ", JSON.stringify(response.data));
 })
 .catch((error) => {
-  console.log(error);
+  console.log("Error axios.request response: ", error);
 });
 })
 .catch((error) => {
-  console.log(error);
+  console.log("Error axios.request: ", error);
 });
 
 console.log("token externo: ", token)
