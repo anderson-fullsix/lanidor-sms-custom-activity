@@ -125,13 +125,13 @@ axios.request(config)
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
   "sendnow": "true",
-  "recipients": decoded.inArguments[0].recipients
-/*  "recipients": [
+/*  "recipients": decoded.inArguments[0].recipients  */
+  "recipients": [
     {
-      "Mobile": decoded.inArguments[0].Mobile
+      "Mobile": decoded.inArguments[0].recipients
     }
   ]
-*/
+
 });
 console.log("**** payload sent to Client server ****");
 console.log("id: ", decoded.inArguments[0].id);
