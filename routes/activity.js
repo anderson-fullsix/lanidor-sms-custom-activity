@@ -102,7 +102,7 @@ axios.get('https://enickt5gs0alo.x.pipedream.net')
   })
  */           
 var token = null
-let config = {
+let config_get = {
   method: 'get',
   maxBodyLength: Infinity,
   url: 'https://www.abinfo.pt/api/sms/auth/login',
@@ -112,7 +112,7 @@ let config = {
   data : ""
 };
 
-axios.request(config)
+axios.request(config_get)
 .then((response) => {
   console.log(JSON.stringify(response.data));
   token = response.data.token
@@ -141,7 +141,7 @@ console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
 console.log("recipients: ", decoded.inArguments[0].recipients);
 
-let config = {
+let config_post = {
   method: 'post',
   maxBodyLength: Infinity,
   url: 'https://www.abinfo.pt/api/sms/communications',
@@ -152,7 +152,7 @@ let config = {
   data : data
 };
 
-axios.request(config)
+axios.request(config_post)
 .then((response) => {
   console.log("JSON stringify: ", JSON.stringify(response.data));
 })
