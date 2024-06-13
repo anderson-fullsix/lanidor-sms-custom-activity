@@ -141,7 +141,7 @@ console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
 console.log("recipients: ", decoded.inArguments[0].recipients);
 
-let await config_post = {
+let config_post = {
   method: 'post',
   maxBodyLength: Infinity,
   url: 'https://www.abinfo.pt/api/sms/communications',
