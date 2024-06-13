@@ -152,7 +152,7 @@ let config_post = {
   data : data
 };
 
-axios.request(config_post)
+await axios.request(config_post)
 .then((response) => {
   console.log("JSON stringify: ", JSON.stringify(response.data));
 })
