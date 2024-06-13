@@ -115,7 +115,7 @@ let config_get = {
 axios.request(config_get)
 .then((response) => {
   console.log(JSON.stringify(response.data));
-  token = response.data.token
+  token = response.data.token;
   console.log("token interno: ", token)
 
   let data = JSON.stringify({
@@ -154,14 +154,14 @@ let config_post = {
 
 axios.request(config_post)
 .then((response) => {
-  console.log("JSON stringify: ", JSON.stringify(response.data));
+  await console.log("JSON stringify: ", JSON.stringify(response.data));
 })
 .catch((error) => {
-  console.log("Error axios.request response: ", error);
+  await console.log("Error axios.request response: ", error);
 });
 })
 .catch((error) => {
-  console.log("Error axios.request: ", error);
+  await console.log("Error axios.request: ", error);
 });
 
 console.log("token externo: ", token)
