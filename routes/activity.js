@@ -141,7 +141,7 @@ console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
 console.log("recipients: ", decoded.inArguments[0].recipients);
 
-let config_post = {
+let await config_post = {
   method: 'post',
   maxBodyLength: Infinity,
   url: 'https://www.abinfo.pt/api/sms/communications',
@@ -152,7 +152,7 @@ let config_post = {
   data : data
 };
 
-await axios.request(config_post)
+axios.request(config_post)
 .then((response) => {
   console.log("JSON stringify: ", JSON.stringify(response.data));
 })
