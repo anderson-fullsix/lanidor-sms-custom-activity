@@ -140,7 +140,7 @@ console.log("description: ", decoded.inArguments[0].description);
 console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
-console.log("Mobile: ", decoded.recipients);
+console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile[0].Mobile);
 console.log("recipients: ", decoded.inArguments[0].recipients);
 
 let config_post = {
