@@ -129,7 +129,7 @@ axios.request(config_get)
 /*  "recipients": decoded.inArguments[0].recipients  */
   "recipients": [
     {
-      "Mobile": decoded.inArguments[0].recipients
+      "Mobile": decoded.inArguments[0].recipients[0].Mobile
     }
   ]
 
