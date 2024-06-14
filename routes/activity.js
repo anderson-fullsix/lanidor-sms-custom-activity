@@ -118,8 +118,8 @@ axios.request(config_get)
   token = response.data.token
   console.log("token interno: ", token)
 
-let recipients = decoded.inArguments[0].recipients.map(recipient => {
-  return { "Mobile": recipient.Mobile[0].Mobile };
+let recipients = decoded.inArguments[0].recipients[0].map(recipient => {
+  return { "Mobile": recipient.Mobile };
 });
 
 let data = JSON.stringify({
