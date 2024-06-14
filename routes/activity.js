@@ -121,6 +121,7 @@ axios.request(config_get)
 let recipients = decoded.inArguments[0].recipients.map(recipient => {
   return { "Mobile": recipient.Mobile };
 });
+console.log("let recipients: ", recipients);
 
 let data = JSON.stringify({
   "id": decoded.inArguments[0].id,
@@ -139,7 +140,7 @@ console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
 console.log("sendnow: ", "true");
-console.log("recipients: ", decoded.inArguments[0].recipients[0].Mobile);
+console.log("recipients: ", recipients);
 
 let config_post = {
   method: 'post',
