@@ -128,9 +128,13 @@ let recipients = [];
 /* let phoneNumbers = decoded.inArguments[0].recipients[0].Mobile; */
 let phoneNumbers = decoded.inArguments[0].recipients;
     
-for (let phoneNumber of phoneNumbers) {
-    recipients.push({ "Mobile": phoneNumber });
-}
+phoneNumbersObjects.forEach(obj => {
+                        for (let key in obj) {
+                            if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
+                                recipients.push({ "Mobile": obj[key] });
+                            }
+                        }
+                    });
 
 console.log("let recipients: ", recipients);
 
