@@ -124,13 +124,12 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 });
 */
 
+let recipients = [];
 let phoneNumbers = decoded.inArguments[0].recipients[0].Mobile;
     
 for (let phoneNumber of phoneNumbers) {
-
-                        recipients.push({ "Mobile": phoneNumber });
-
-                    }
+    recipients.push({ "Mobile": phoneNumber });
+}
 
 console.log("let recipients: ", recipients);
 
