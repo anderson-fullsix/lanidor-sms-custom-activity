@@ -118,11 +118,12 @@ axios.request(config_get)
   token = response.data.token
   console.log("token interno: ", token)
 
-/*
+
 let recipients = decoded.inArguments[0].recipients.map(recipient => {
   return { "Mobile": recipient.Mobile };
 });
-*/
+
+/*
 let phoneNumbers = decoded.inArguments[0].recipients.Mobile;
     
 for (let phoneNumber of phoneNumbers) {
@@ -130,6 +131,7 @@ for (let phoneNumber of phoneNumbers) {
                         recipients.push({ "Mobile": phoneNumber });
 
                     }
+*/
 console.log("let recipients: ", recipients);
 
 let data = JSON.stringify({
