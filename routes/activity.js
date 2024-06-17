@@ -126,16 +126,16 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 
 let recipients = [];
 /* let phoneNumbers = decoded.inArguments[0].recipients[0].Mobile; */
-let phoneNumbersObjects = decoded.inArguments[0].recipients;
+let phoneNumbers = [];
     
-phoneNumbersObjects.forEach(obj => {
+decoded.inArguments[0].recipients.forEach(obj => {
                         for (let key in obj) {
                             if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
-                                recipients.push({ "Mobile": obj[key] });
+                                phoneNumbers.push(obj[key]);
                             }
                         }
                     });
-
+recipients.push({ "Mobile": phoneNumbers.join(', ') });
 console.log("let recipients: ", recipients);
 
 let data = JSON.stringify({
