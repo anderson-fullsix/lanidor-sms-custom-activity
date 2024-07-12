@@ -133,9 +133,9 @@ decoded.inArguments[0].recipients.forEach(obj => {
                             if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
                                 phoneNumbers.push(obj[key]);
                             }
+                            recipients.push({ "Mobile": phoneNumbers.join(', ') });
                         }
                     });
-recipients.push({ "Mobile": phoneNumbers.join(', ') });
 console.log("let recipients: ", recipients);
 
 let data = JSON.stringify({
