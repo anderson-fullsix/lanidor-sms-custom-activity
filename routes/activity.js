@@ -125,19 +125,14 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 */
 
 let recipients = [];
-/* let phoneNumbers = decoded.inArguments[0].recipients[0].Mobile; */
-let phoneNumbers = [];
-    
 decoded.inArguments[0].recipients.forEach(obj => {
-                        for (let key in obj) {
-                            if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
-                                phoneNumbers.push(obj[key]);
-                            }
-                            recipients.push({ "Mobile": phoneNumbers.join(', ') });
-                            console.log("let recipients: ", recipients);
-                        }
-                    });
-
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
+            recipients.push({ "Mobile": obj[key] });
+        }
+    }
+});
+console.log("recipients: ", recipients);
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
 console.log("decoded.inArguments: ", decoded.inArguments);
     
