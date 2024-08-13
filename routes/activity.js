@@ -125,8 +125,8 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 */
 
 let recipients = [
-    { "Mobile": "351900000000" },
-    { "Mobile": "351900000001" }
+    { "Mobile": "351900000002" },
+    { "Mobile": "351900000003" }
 ];
 decoded.inArguments[0].recipients.forEach(obj => {
     for (let key in obj) {
