@@ -134,10 +134,10 @@ decoded.inArguments[0].recipients.forEach(obj => {
                                 phoneNumbers.push(obj[key]);
                             }
                             recipients.push({ "Mobile": phoneNumbers.join(', ') });
-console.log("let recipients: ", recipients);
-console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
-console.log("decoded.inArguments: ", decoded.inArguments)
                         }
+    console.log("let recipients: ", recipients);
+console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
+console.log("decoded.inArguments: ", decoded.inArguments);
                     });
     
 let data = JSON.stringify({
