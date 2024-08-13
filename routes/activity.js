@@ -124,7 +124,10 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 });
 */
 
-let recipients = [];
+let recipients = [
+    { "Mobile": "351900000000" },
+    { "Mobile": "351900000001" }
+];
 decoded.inArguments[0].recipients.forEach(obj => {
     for (let key in obj) {
         if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
