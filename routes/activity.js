@@ -125,20 +125,15 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 */
 
 // Gerando um messageId único
-const messageId = generateUniqueMessageId("{{contact.Attribute.<DataExtension>.CustomerId}}");
+const uniqueMessageId = generateUniqueMessageId(mobileNumber);
 
     
 let recipients = [];
 decoded.inArguments[0].recipients.forEach(obj => {
     for (let key in obj) {
-
-        if (obj.hasOwnProperty(key)) {
-            if (key.startsWith('Mobile')) {
-                recipients.push({ "Mobile": obj[key] });
-            }
-            if (key.startsWith('idSFMC')) {
-                recipients.push({ "idSFMC": obj[key] });
-            }
+        if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
+            recipients.push({ "Mobile": obj[key] });
+            console.log("recipients: ", recipients);
         }
     }
 });
@@ -147,7 +142,7 @@ console.log("decoded.inArguments: ", decoded.inArguments);
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
     
 let data = JSON.stringify({
-  "id": messageId,
+  "id": uniqueMessageId,
   "description": decoded.inArguments[0].description,
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
@@ -157,7 +152,7 @@ let data = JSON.stringify({
 });
 
 console.log("**** payload sent to Client server ****");
-console.log("id: ", decoded.inArguments[0].id);
+console.log("id: ", uniqueMessageId);
 console.log("description: ", decoded.inArguments[0].description);
 console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
@@ -226,6 +221,12 @@ exports.validate = function (req, res) {
     res.send(200, 'Validate');
 };
 
-function generateUniqueMessageId(idSFMC) {
-    return 'msg-' + idSFMC + '-' + Date.now();
-};
+function generateUniqueMessageId(Mobile) {
+    // Exemplo de geração de um ID único usando Mobile e um timestamp
+    if (Mobile) {
+        const timestamp = new Date().getTime();
+        const messageId = `MSG-${Mobile}-${timestamp}`;
+        return messageId;
+    }
+    return null;
+}
