@@ -142,7 +142,7 @@ let idSFMCrecip = [];
 decoded.inArguments[0].idSFMCrecip.forEach(obj => {
     for (let key in obj) {
         if (obj.hasOwnProperty(key) && key.startsWith('idSFMC')) {
-            idSFMC.push({ "idSFMC": obj[key] });
+            idSFMCrecip.push({ "idSFMC": obj[key] });
             console.log("idSFMC: ", idSFMCrecip);
         }
     }
