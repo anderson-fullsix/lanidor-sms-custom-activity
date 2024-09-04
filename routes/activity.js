@@ -153,7 +153,6 @@ let data = JSON.stringify({
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
   "sendnow": "true",
-  "idSFMC": decoded.inArguments[0].idSFMCrecip[0].idSFMC,
   "recipients": recipients
 });
 
