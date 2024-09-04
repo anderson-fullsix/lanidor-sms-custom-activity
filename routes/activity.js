@@ -125,7 +125,8 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 */
 
 // Gerando um messageId único
-const uniqueMessageId = generateUniqueMessageId(Mobile);
+const uniqueMessageId = generateUniqueMessageId();
+console.log("Unique Message ID: ", uniqueMessageId);
 
     
 let recipients = [];
@@ -221,12 +222,7 @@ exports.validate = function (req, res) {
     res.send(200, 'Validate');
 };
 
-function generateUniqueMessageId(Mobile) {
-    // Exemplo de geração de um ID único usando Mobile e um timestamp
-    if (Mobile) {
-        const timestamp = new Date().getTime();
-        const messageId = `MSG-${Mobile}-${timestamp}`;
-        return messageId;
-    }
-    return null;
+function generateUniqueMessageId() {
+    const timestamp = new Date().getTime();  // Usa apenas o timestamp
+    return `MSG-${timestamp}`;  // Retorna o ID único baseado no timestamp
 }
