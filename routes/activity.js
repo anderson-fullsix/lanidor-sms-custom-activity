@@ -129,7 +129,7 @@ const uniqueMessageId = generateUniqueMessageId();
 console.log("Unique Message ID: ", uniqueMessageId);
 
     
-let recipients = [];
+var recipients = [];
 decoded.inArguments[0].recipients.forEach(obj => {
     for (let key in obj) {
         if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
@@ -222,5 +222,5 @@ exports.validate = function (req, res) {
 
 function generateUniqueMessageId() {
     const timestamp = new Date().getTime();  // Usa apenas o timestamp
-    return `MSG-${timestamp}`;  // Retorna o ID único baseado no timestamp
+    return `MSG-${recipients[0]}-${timestamp}`;  // Retorna o ID único baseado no timestamp
 }
