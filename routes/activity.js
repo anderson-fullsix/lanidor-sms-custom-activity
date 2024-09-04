@@ -137,6 +137,16 @@ decoded.inArguments[0].recipients.forEach(obj => {
         }
     }
 });
+
+let idSFMCrecip = [];
+decoded.inArguments[0].idSFMCrecip.forEach(obj => {
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key) && key.startsWith('idSFMC')) {
+            idSFMC.push({ "idSFMC": obj[key] });
+            console.log("idSFMC: ", idSFMCrecip);
+        }
+    }
+});
 console.log("decoded.inArguments: ", decoded.inArguments);
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
     
@@ -147,7 +157,7 @@ let data = JSON.stringify({
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
   "sendnow": "true",
-  "idSFMC": decoded.inArguments[0].recipients[0].idSFMC,
+  "idSFMC": decoded.inArguments[0].idSFMCrecip[0].idSFMC,
   "recipients": recipients
 });
 
@@ -158,7 +168,7 @@ console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
 console.log("sendnow: ", "true");
-console.log("idSFMC: ", decoded.inArguments[0].recipients[0].idSFMC);
+console.log("idSFMC: ", decoded.inArguments[0].idSFMCrecip[0].idSFMC);
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
 
