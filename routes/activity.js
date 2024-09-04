@@ -125,7 +125,7 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 */
 
 // Gerando um messageId único
-const uniqueMessageId = generateUniqueMessageId(mobileNumber);
+const uniqueMessageId = generateUniqueMessageId(Mobile);
 
     
 let recipients = [];
