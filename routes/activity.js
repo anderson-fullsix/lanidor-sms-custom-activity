@@ -123,17 +123,14 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
   return { "Mobile": recipient.Mobile };
 });
 */
-
-// Gerando um messageId único
-const uniqueMessageId = generateUniqueMessageId();
-console.log("Unique Message ID: ", uniqueMessageId);
-
     
-var recipients = [];
+let recipients = [];
+let mobileNumber = '';
 decoded.inArguments[0].recipients.forEach(obj => {
     for (let key in obj) {
         if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
             recipients.push({ "Mobile": obj[key] });
+            mobileNumber = obj[key];
             console.log("recipients: ", recipients);
         }
     }
@@ -141,7 +138,11 @@ decoded.inArguments[0].recipients.forEach(obj => {
     
 console.log("decoded.inArguments: ", decoded.inArguments);
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
-    
+
+// Gerando um messageId único
+const uniqueMessageId = generateUniqueMessageId(mobileNumber);
+console.log("Unique Message ID: ", uniqueMessageId);
+
 let data = JSON.stringify({
   "id": uniqueMessageId,
   "description": decoded.inArguments[0].description,
@@ -220,7 +221,7 @@ exports.validate = function (req, res) {
     res.send(200, 'Validate');
 };
 
-function generateUniqueMessageId() {
+function generateUniqueMessageId(mobileNumber) {
     const timestamp = new Date().getTime();  // Usa apenas o timestamp
-    return `MSG-${recipients[0]}-${timestamp}`;  // Retorna o ID único baseado no timestamp
+    return `MSG-${mobileNumber}-${timestamp}`;  // Retorna o ID único baseado no timestamp
 }
