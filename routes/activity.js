@@ -135,24 +135,17 @@ decoded.inArguments[0].recipients.forEach(obj => {
             recipients.push({ "Mobile": obj[key] });
             console.log("recipients: ", recipients);
         }
-    }
-});
-
-let idSFMCrecip = [];
-if (decoded && decoded.inArguments && decoded.inArguments[0] && Array.isArray(decoded.inArguments[0].idSFMCrecip)) {
-    decoded.inArguments[0].idSFMCrecip.forEach(obj => {
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key) && key.startsWith('idSFMC')) {
-                idSFMCrecip.push({ "idSFMC": obj[key] });
-                console.log("idSFMC: ", idSFMCrecip);
+        if (obj.hasOwnProperty(key)) {
+            if (key.startsWith('Mobile')) {
+                recipients.push({ "Mobile": obj[key] });
+            }
+            if (key.startsWith('idSFMC')) {
+                recipients.push({ "idSFMC": obj[key] });
             }
         }
-    });
-} else {
-    console.error("idSFMCrecip is not defined or is not an array");
-}
+    }
+});
     
-
 console.log("decoded.inArguments: ", decoded.inArguments);
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
     
