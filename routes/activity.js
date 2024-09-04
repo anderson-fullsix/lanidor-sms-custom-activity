@@ -163,6 +163,7 @@ console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
 console.log("sendnow: ", "true");
+console.log("idSFMC: ", decoed.inArguments[0].idSFMC);
 console.log("idSFMC: ", decoded.inArguments[0].recipients[0].idSFMC);
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
