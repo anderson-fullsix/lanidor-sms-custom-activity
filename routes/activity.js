@@ -124,6 +124,10 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 });
 */
 
+// Gerando um messageId único
+const messageId = generateUniqueMessageId("{{contact.Attribute.<DataExtension>.CustomerId}}");
+
+    
 let recipients = [];
 decoded.inArguments[0].recipients.forEach(obj => {
     for (let key in obj) {
@@ -137,12 +141,13 @@ console.log("decoded.inArguments: ", decoded.inArguments);
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
     
 let data = JSON.stringify({
-  "id": decoded.inArguments[0].id,
+  "id": messageId,
   "description": decoded.inArguments[0].description,
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
   "sendnow": "true",
+  "idSFMC": decoded.inArguments[0].idSFMC,
   "recipients": recipients
 });
 
@@ -153,6 +158,7 @@ console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
 console.log("sendnow: ", "true");
+console.log("idSFMC: ", decoded.inArguments[0].idSFMC);
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
 
@@ -212,4 +218,8 @@ exports.validate = function (req, res) {
     //console.log( req.body );
     logData(req);
     res.send(200, 'Validate');
+};
+
+function generateUniqueMessageId(idSFMC) {
+    return 'msg-' + idSFMC + '-' + Date.now();
 };
