@@ -139,14 +139,20 @@ decoded.inArguments[0].recipients.forEach(obj => {
 });
 
 let idSFMCrecip = [];
-decoded.inArguments[0].idSFMCrecip.forEach(obj => {
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key) && key.startsWith('idSFMC')) {
-            idSFMCrecip.push({ "idSFMC": obj[key] });
-            console.log("idSFMC: ", idSFMCrecip);
+if (decoded && decoded.inArguments && decoded.inArguments[0] && Array.isArray(decoded.inArguments[0].idSFMCrecip)) {
+    decoded.inArguments[0].idSFMCrecip.forEach(obj => {
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key) && key.startsWith('idSFMC')) {
+                idSFMCrecip.push({ "idSFMC": obj[key] });
+                console.log("idSFMC: ", idSFMCrecip);
+            }
         }
-    }
-});
+    });
+} else {
+    console.error("idSFMCrecip is not defined or is not an array");
+}
+    
+
 console.log("decoded.inArguments: ", decoded.inArguments);
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
     
