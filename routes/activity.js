@@ -131,10 +131,7 @@ const messageId = generateUniqueMessageId("{{contact.Attribute.<DataExtension>.C
 let recipients = [];
 decoded.inArguments[0].recipients.forEach(obj => {
     for (let key in obj) {
-        if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
-            recipients.push({ "Mobile": obj[key] });
-            console.log("recipients: ", recipients);
-        }
+
         if (obj.hasOwnProperty(key)) {
             if (key.startsWith('Mobile')) {
                 recipients.push({ "Mobile": obj[key] });
