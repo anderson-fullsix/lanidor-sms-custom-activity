@@ -20,7 +20,7 @@
                    "partnerId": "{{Event.DEAudience-e0b65696-ae43-4bf1-d4e1-9cbf6cff8808.partnerId}}",
                    "sendingDate": "{{Contact.Attribute.SMSJourney.sendingDate}}",
                    "mobile": "{{Contact.Default.PhoneNumber}}",
-                   "idSFMC": "{{Event.DEAudience-e0b65696-ae43-4bf1-d4e1-9cbf6cff8808.idSFMC}}"
+                   "idSFMC": "{{Event.SMSJourney.idSFMC}}"
                }
            ],
           "outArguments": [],
