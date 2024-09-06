@@ -127,13 +127,33 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 let recipients = [];
 let mobileNumber = '';
 let customerName = '';
-decoded.inArguments[0].recipients.forEach(obj => {
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
-            recipients.push({ "Mobile": obj[key] });
-            mobileNumber = obj[key];
-            console.log("recipients: ", recipients);
+
+decoded.inArguments.forEach(arg => {
+    // Itera sobre os destinatários para buscar o número de telefone
+    if (arg.recipients) {
+        arg.recipients.forEach(obj => {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
+                    recipients.push({ "Mobile": obj[key] });
+                    mobileNumber = obj[key];
+                    console.log("recipients: ", recipients);
+                }
+            }
+        });
+    }
+
+    // Processa o campo "text" e substitui os placeholders pelos valores da DE
+    if (arg.text) {
+        textMessage = arg.text;
+
+        // Substitui o placeholder pelo valor do campo da DE
+        for (let key in arg) {
+            if (arg.hasOwnProperty(key) && textMessage.includes(`{{${key}}}`)) {
+                textMessage = textMessage.replace(`{{${key}}}`, arg[key]);
+            }
         }
+
+        console.log("Message: ", textMessage);
     }
 });
     
