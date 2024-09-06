@@ -157,6 +157,13 @@ decoded.inArguments.forEach(arg => {
     }
 });
 
+if (idSFMC) {
+    messageText = messageText.replace("{{idSFMC}}", idSFMC);
+    console.log("Mensagem final: ", messageText);
+} else {
+    console.log("idSFMC está indefinido. Substituição não realizada.");
+}
+
 // Substitui a variável na mensagem de texto
 messageText = messageText.replace("{{idSFMC}}", idSFMC);
 console.log("Mensagem final: ", messageText);
