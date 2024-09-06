@@ -127,6 +127,7 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 let recipients = [];
 let mobileNumber = '';
 let idSFMC = '';
+let messageText = ''; // Variável para armazenar o texto da mensagem
 
 // Itera sobre os inArguments
 decoded.inArguments.forEach(arg => {
