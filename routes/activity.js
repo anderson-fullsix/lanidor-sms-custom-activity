@@ -129,12 +129,17 @@ let mobileNumber = '';
 let idSFMC = '';
 let messageText = ''; // Variável para armazenar o texto da mensagem
 
+console.log("decoded.inArguments: ", JSON.stringify(decoded.inArguments));
+console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
+
 // Itera sobre os inArguments
 decoded.inArguments.forEach(arg => {
     // Verifica se idSFMC está presente
     if (arg.idSFMC) {
         idSFMC = arg.idSFMC;
         console.log("idSFMC: ", idSFMC);
+    } else {
+        console.log("idSFMC não encontrado em: ", arg);
     }
 
     // Verifica se o texto da mensagem está presente
@@ -165,11 +170,10 @@ if (idSFMC) {
 }
 
 // Substitui a variável na mensagem de texto
+/*
 messageText = messageText.replace("{{idSFMC}}", idSFMC);
 console.log("Mensagem final: ", messageText);
-    
-console.log("decoded.inArguments: ", decoded.inArguments);
-console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
+*/
 
 // Gerando um messageId único
 const uniqueMessageId = generateUniqueMessageId(mobileNumber);
