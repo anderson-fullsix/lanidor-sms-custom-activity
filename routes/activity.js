@@ -126,7 +126,7 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
     
 let recipients = [];
 let mobileNumber = '';
-let customerName = '';
+let textMessage = '';
 
 decoded.inArguments.forEach(arg => {
     // Itera sobre os destinatários para buscar o número de telefone
