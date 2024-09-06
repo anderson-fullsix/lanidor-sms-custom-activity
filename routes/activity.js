@@ -136,6 +136,12 @@ decoded.inArguments.forEach(arg => {
         console.log("idSFMC: ", idSFMC);
     }
 
+    // Verifica se o texto da mensagem está presente
+    if (arg.text) {
+        messageText = arg.text;
+        console.log("Texto da mensagem: ", messageText);
+    }
+
     // Itera sobre os destinatários para buscar o número de telefone
     if (arg.recipients) {
         arg.recipients.forEach(obj => {
@@ -151,7 +157,7 @@ decoded.inArguments.forEach(arg => {
 });
 
 // Substitui a variável na mensagem de texto
-let messageText = arg.text.replace("{{idSFMC}}", idSFMC);
+messageText = messageText.replace("{{idSFMC}}", idSFMC);
 console.log("Mensagem final: ", messageText);
     
 console.log("decoded.inArguments: ", decoded.inArguments);
