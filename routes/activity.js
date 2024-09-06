@@ -126,9 +126,16 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
     
 let recipients = [];
 let mobileNumber = '';
-let textMessage = '';
+let idSFMC = '';
 
+// Itera sobre os inArguments
 decoded.inArguments.forEach(arg => {
+    // Verifica se idSFMC está presente
+    if (arg.idSFMC) {
+        idSFMC = arg.idSFMC;
+        console.log("idSFMC: ", idSFMC);
+    }
+
     // Itera sobre os destinatários para buscar o número de telefone
     if (arg.recipients) {
         arg.recipients.forEach(obj => {
@@ -141,21 +148,11 @@ decoded.inArguments.forEach(arg => {
             }
         });
     }
-
-    // Processa o campo "text" e substitui os placeholders pelos valores da DE
-    if (arg.text) {
-        textMessage = arg.text;
-
-        // Substitui o placeholder pelo valor do campo da DE
-        for (let key in arg) {
-            if (arg.hasOwnProperty(key) && textMessage.includes(`{{${key}}}`)) {
-                textMessage = textMessage.replace(`{{${key}}}`, arg[key]);
-            }
-        }
-
-        console.log("Message: ", textMessage);
-    }
 });
+
+// Substitui a variável na mensagem de texto
+let messageText = arg.text.replace("{{idSFMC}}", idSFMC);
+console.log("Mensagem final: ", messageText);
     
 console.log("decoded.inArguments: ", decoded.inArguments);
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
