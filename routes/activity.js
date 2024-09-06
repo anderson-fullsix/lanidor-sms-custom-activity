@@ -135,6 +135,9 @@ decoded.inArguments[0].recipients.forEach(obj => {
                 mobileNumber = obj[key];
                 console.log("recipients: ", recipients);
             }
+            if (key === 'idSFMC') {
+                customerName = obj[key];
+            }
         }
     }
 });
@@ -146,13 +149,15 @@ console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
 const uniqueMessageId = generateUniqueMessageId(mobileNumber);
 console.log("Unique Message ID: ", uniqueMessageId);
 
+let textTemplate = decoded.inArguments[0].text || ''; // Garante que o campo text existe
+let personalizedText = textTemplate.replace('{{customerName}}', customerName); // Substitui o placeholder
 
 let data = JSON.stringify({
   "id": uniqueMessageId,
   "description": decoded.inArguments[0].description,
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
-  "text": decoded.inArguments[0].text,
+  "text": personalizedText,
   "idSFMC": decoded.inArguments[0].idSFMC,
   "sendnow": "true",
   "recipients": recipients
@@ -163,7 +168,7 @@ console.log("id: ", uniqueMessageId);
 console.log("description: ", decoded.inArguments[0].description);
 console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
-console.log("text: ", decoded.inArguments[0].text);
+console.log("text: ", personalizedText);
 console.log("idSFMC: ", decoded.inArguments[0].idSFMC);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
