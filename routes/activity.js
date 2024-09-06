@@ -129,12 +129,10 @@ let mobileNumber = '';
 let customerName = '';
 decoded.inArguments[0].recipients.forEach(obj => {
     for (let key in obj) {
-        if (obj.hasOwnProperty(key) {
-            if (key.startsWith('Mobile')) {
-                recipients.push({ "Mobile": obj[key] });
-                mobileNumber = obj[key];
-                console.log("recipients: ", recipients);
-            }
+        if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
+            recipients.push({ "Mobile": obj[key] });
+            mobileNumber = obj[key];
+            console.log("recipients: ", recipients);
         }
     }
 });
@@ -145,8 +143,6 @@ console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
 // Gerando um messageId único
 const uniqueMessageId = generateUniqueMessageId(mobileNumber);
 console.log("Unique Message ID: ", uniqueMessageId);
-
-
 
 let data = JSON.stringify({
   "id": uniqueMessageId,
