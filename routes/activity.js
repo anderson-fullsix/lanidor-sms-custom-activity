@@ -139,7 +139,7 @@ decoded.inArguments.forEach(arg => {
         idSFMC = arg.idSFMC;
         console.log("idSFMC: ", idSFMC);
     } else {
-        console.log("idSFMC1 não encontrado em: ", arg);
+        console.log("idSFMC não encontrado em: ", arg);
     }
 
     // Verifica se o texto da mensagem está presente
