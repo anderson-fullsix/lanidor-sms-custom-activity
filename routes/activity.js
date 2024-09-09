@@ -163,7 +163,7 @@ decoded.inArguments.forEach(arg => {
 });
 
 if (idSFMC) {
-    messageText = messageText.replace("<<idSFMC>>", idSFMC);
+    messageText = messageText.replace("{{idSFMC}}", idSFMC);
     console.log("Mensagem final: ", messageText);
 } else {
     console.log("idSFMC está indefinido. Substituição não realizada.");
@@ -184,7 +184,7 @@ let data = JSON.stringify({
   "description": decoded.inArguments[0].description,
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
-  "text": decoded.inArguments[0].text,
+  "text": decoded.inArguments[0].messageText,
   "idSFMC": decoded.inArguments[0].idSFMC,
   "sendnow": "true",
   "recipients": recipients
@@ -195,7 +195,7 @@ console.log("id: ", uniqueMessageId);
 console.log("description: ", decoded.inArguments[0].description);
 console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
-console.log("text: ", decoded.inArguments[0].text);
+console.log("text: ", decoded.inArguments[0].messageText);
 console.log("idSFMC: ", decoded.inArguments[0].idSFMC);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
