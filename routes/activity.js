@@ -126,7 +126,8 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
     
 let recipients = [];
 let mobileNumber = '';
-let idSFMC = '';
+let idSFMC1 = '';
+let idSFMC2 = '';
 let messageText = ''; // Variável para armazenar o texto da mensagem
 
 console.log("decoded.inArguments: ", JSON.stringify(decoded.inArguments));
@@ -135,11 +136,18 @@ console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
 // Itera sobre os inArguments
 decoded.inArguments.forEach(arg => {
     // Verifica se idSFMC está presente
-    if (arg.idSFMC) {
-        idSFMC = arg.idSFMC;
-        console.log("idSFMC: ", idSFMC);
+    if (arg.idSFMC1) {
+        idSFMC = arg.idSFMC1;
+        console.log("idSFMC1: ", idSFMC1);
     } else {
-        console.log("idSFMC não encontrado em: ", arg);
+        console.log("idSFMC1 não encontrado em: ", arg);
+    }
+
+    if (arg.idSFMC2) {
+        idSFMC = arg.idSFMC2;
+        console.log("idSFMC2: ", idSFMC1);
+    } else {
+        console.log("idSFMC2 não encontrado em: ", arg);
     }
 
     // Verifica se o texto da mensagem está presente
@@ -162,11 +170,18 @@ decoded.inArguments.forEach(arg => {
     }
 });
 
-if (idSFMC) {
-    messageText = messageText.replace("{{idSFMC}}", idSFMC);
+if (idSFMC1) {
+    messageText = messageText.replace("{{idSFMC1}}", idSFMC1);
     console.log("Mensagem final: ", messageText);
 } else {
-    console.log("idSFMC está indefinido. Substituição não realizada.");
+    console.log("idSFMC1 está indefinido. Substituição não realizada.");
+}
+
+if (idSFMC2) {
+    messageText = messageText.replace("{{idSFMC2}}", idSFMC2);
+    console.log("Mensagem final: ", messageText);
+} else {
+    console.log("idSFMC2 está indefinido. Substituição não realizada.");
 }
 
 // Substitui a variável na mensagem de texto
@@ -185,7 +200,8 @@ let data = JSON.stringify({
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
-  "idSFMC": decoded.inArguments[0].idSFMC,
+  "idSFMC1": decoded.inArguments[0].idSFMC1,
+  "idSFMC2": decoded.inArguments[0].idSFMC2,
   "sendnow": "true",
   "recipients": recipients
 });
@@ -196,7 +212,8 @@ console.log("description: ", decoded.inArguments[0].description);
 console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", decoded.inArguments[0].text);
-console.log("idSFMC: ", decoded.inArguments[0].idSFMC);
+console.log("idSFMC1: ", decoded.inArguments[0].idSFMC1);
+console.log("idSFMC2: ", decoded.inArguments[0].idSFMC2);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
