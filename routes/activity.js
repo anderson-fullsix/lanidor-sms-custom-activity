@@ -185,7 +185,7 @@ let data = JSON.stringify({
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
   "text": decoded.inArguments[0].text,
-  "idSFMC1": decoded.inArguments[0].idSFMC,
+  "idSFMC": decoded.inArguments[0].idSFMC,
   "sendnow": "true",
   "recipients": recipients
 });
