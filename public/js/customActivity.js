@@ -188,6 +188,9 @@ define([
             "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
 	    "sender": "{{Event.' + eventDefinitionKey + '.sender}}",
             "partnerId": "{{Event.' + eventDefinitionKey + '.partnerId}}",
+            "idSFMC": "{{Event.' + eventDefinitionKey + '.idSFMC}}",
+            "idSFMC1": "{{Event.' + eventDefinitionKey + '.idSFMC1}}",
+            "idSFMC2": "{{Event.' + eventDefinitionKey + '.idSFMC2}}",
             "sendnow": "true",
             "recipients": 
 		[{ "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}" }]
