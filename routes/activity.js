@@ -7,6 +7,7 @@ const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
 const axios = require('axios');
+const FuelRest = require('fuel-rest');
 
 exports.logExecuteData = [];
 
@@ -47,6 +48,50 @@ function logData(req) {
     console.log("protocol: " + req.protocol);
     console.log("secure: " + req.secure);
     console.log("originalUrl: " + req.originalUrl);
+}
+
+// Configurações da API do Marketing Cloud
+const options = {
+    auth: {
+        clientId: '0zi6qnu4vepdfsotelvxeimj',
+        clientSecret: 'KRjVa8UgYVqRDlbmHIipkpiW',
+        authUrl: 'https://mc71q4r3qz1wj1ctb5smlpmsr3-4.auth.marketingcloudapis.com/'
+    }
+};
+
+const RestClient = new FuelRest(options);
+
+// Função para gravar os dados na Data Extension
+async function saveToDataExtension(data) {
+    const dePayload = {
+        "items": [
+            {
+                "id": data.id,
+                "partnerId": data.partnerId,
+                "sender": data.sender,
+                "description": data.description,
+                "text": data.text,
+                "user": data.user,
+                "registrationDate": data.registrationDate,
+                "records": data.records,
+                "status": data.status,
+                "sentDate": data.sentDate,
+                "error": data.error
+            }
+        ]
+    };
+
+    try {
+        const response = await RestClient.post({
+            uri: '/hub/v1/dataevents/key:65659DF6-6DED-4C78-9CF3-5683939E4F36/rowset',
+            headers: { 'Content-Type': 'application/json' },
+            json: dePayload
+        });
+
+        console.log('Dados gravados na Data Extension:', response.body);
+    } catch (err) {
+        console.error('Erro ao gravar na Data Extension:', err);
+    }
 }
 
 /*
@@ -217,6 +262,8 @@ let config_post = {
 axios.request(config_post)
 .then((response) => {
   console.log("JSON stringify: ", JSON.stringify(response.data));
+  // Chama a função para gravar os dados na Data Extension após a resposta
+  saveToDataExtension(response.data);
 })
 .catch((error) => {
   console.log("Error axios.request response: ", error);
