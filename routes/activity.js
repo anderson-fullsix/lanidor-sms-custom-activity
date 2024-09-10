@@ -50,6 +50,7 @@ function logData(req) {
     console.log("originalUrl: " + req.originalUrl);
 }
 
+/*
 // Configurações da API do Marketing Cloud
 const options = {
     auth: {
@@ -93,6 +94,7 @@ async function saveToDataExtension(data) {
         console.error('Erro ao gravar na Data Extension:', err);
     }
 }
+*/
 
 /*
  * POST Handler for / route of Activity (this is the edit route).
@@ -263,7 +265,7 @@ axios.request(config_post)
 .then((response) => {
   console.log("JSON stringify: ", JSON.stringify(response.data));
   // Chama a função para gravar os dados na Data Extension após a resposta
-  saveToDataExtension(response.data);
+  // saveToDataExtension(response.data);
 })
 .catch((error) => {
   console.log("Error axios.request response: ", error);
