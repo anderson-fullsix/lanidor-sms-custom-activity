@@ -7,7 +7,7 @@ const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
 const axios = require('axios');
-const FuelRest = require('fuel-rest');
+//const FuelRest = require('fuel-rest');
 
 exports.logExecuteData = [];
 
@@ -54,8 +54,8 @@ function logData(req) {
 // Configurações da API do Marketing Cloud
 const options = {
     auth: {
-        clientId: '0zi6qnu4vepdfsotelvxeimj',
-        clientSecret: 'KRjVa8UgYVqRDlbmHIipkpiW',
+        clientId: '',
+        clientSecret: '',
         authUrl: 'https://mc71q4r3qz1wj1ctb5smlpmsr3-4.auth.marketingcloudapis.com/'
     }
 };
