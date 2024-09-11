@@ -50,13 +50,13 @@ function logData(req) {
     console.log("originalUrl: " + req.originalUrl);
 }
 
-/*
+
 // Configurações da API do Marketing Cloud
 const options = {
     auth: {
-        clientId: '',
-        clientSecret: '',
-        authUrl: 'https://mc71q4r3qz1wj1ctb5smlpmsr3-4.auth.marketingcloudapis.com/'
+        clientId: '0zi6qnu4vepdfsotelvxeimj',
+        clientSecret: 'KRjVa8UgYVqRDlbmHIipkpiW',
+        authUrl: 'https://auth.exacttargetapis.com/v1/requestToken'
     }
 };
 
@@ -94,7 +94,7 @@ async function saveToDataExtension(data) {
         console.error('Erro ao gravar na Data Extension:', err);
     }
 }
-*/
+
 
 /*
  * POST Handler for / route of Activity (this is the edit route).
@@ -265,7 +265,7 @@ axios.request(config_post)
 .then((response) => {
   console.log("JSON stringify: ", JSON.stringify(response.data));
   // Chama a função para gravar os dados na Data Extension após a resposta
-  // saveToDataExtension(response.data);
+  saveToDataExtension(response.data);
 })
 .catch((error) => {
   console.log("Error axios.request response: ", error);
