@@ -179,7 +179,7 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
     
 let recipients = [];
 let mobileNumber = '';
-let idSFMC = '';
+let variavel = '';
 let messageText = ''; // Variável para armazenar o texto da mensagem
 
 console.log("decoded.inArguments: ", JSON.stringify(decoded.inArguments));
@@ -187,12 +187,12 @@ console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
 
 // Itera sobre os inArguments
 decoded.inArguments.forEach(arg => {
-    // Verifica se idSFMC está presente
-    if (arg.idSFMC) {
-        idSFMC = arg.idSFMC;
-        console.log("idSFMC: ", idSFMC);
+    // Verifica se variavel está presente
+    if (arg.variavel) {
+        variavel = arg.variavel;
+        console.log("variavel: ", variavel);
     } else {
-        console.log("idSFMC não encontrado em: ", arg);
+        console.log("variavel não encontrado em: ", arg);
     }
 
     // Verifica se o texto da mensagem está presente
@@ -215,18 +215,12 @@ decoded.inArguments.forEach(arg => {
     }
 });
 
-if (idSFMC) {
-    messageText = messageText.replace("<<idSFMC>>", idSFMC);
+if (variavel) {
+    messageText = messageText.replace("<<variavel>>", variavel);
     console.log("Mensagem final: ", messageText);
 } else {
-    console.log("idSFMC está indefinido. Substituição não realizada.");
+    console.log("variavel está indefinido. Substituição não realizada.");
 }
-
-// Substitui a variável na mensagem de texto
-/*
-messageText = messageText.replace("{{idSFMC}}", idSFMC);
-console.log("Mensagem final: ", messageText);
-*/
 
 // Gerando um messageId único
 const uniqueMessageId = generateUniqueMessageId(mobileNumber);
@@ -239,7 +233,7 @@ let data = JSON.stringify({
   "partnerId": decoded.inArguments[0].partnerId,
 //  "text": decoded.inArguments[0].text,
   "text": messageText,
-  "idSFMC": decoded.inArguments[0].idSFMC,
+  "variavel": decoded.inArguments[0].variavel,
   "sendnow": "true",
   "recipients": recipients
 });
@@ -251,7 +245,7 @@ console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
 //console.log("text: ", decoded.inArguments[0].text);
 console.log("text: ", messageText);
-console.log("idSFMC: ", decoded.inArguments[0].idSFMC);
+console.log("variavel: ", decoded.inArguments[0].variavel);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
