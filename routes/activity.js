@@ -50,17 +50,15 @@ function logData(req) {
     console.log("originalUrl: " + req.originalUrl);
 }
 
-/*
-// Configurações da API do Marketing Cloud
-const options = {
-    auth: {
-        clientId: '0zi6qnu4vepdfsotelvxeimj',
-        clientSecret: 'KRjVa8UgYVqRDlbmHIipkpiW',
-        authUrl: 'https://auth.exacttargetapis.com/v1/requestToken'
-    }
-};
 
-const RestClient = new FuelRest(options);
+// Função para obter o token OAuth
+async function getOAuthToken() {
+    const authResponse = await axios.post('https://auth.exacttargetapis.com/v1/requestToken', {
+        clientId: '0zi6qnu4vepdfsotelvxeimj',
+        clientSecret: 'KRjVa8UgYVqRDlbmHIipkpiW'
+    });
+    return authResponse.data.accessToken;
+}
 
 // Função para gravar os dados na Data Extension
 async function saveToDataExtension(data) {
@@ -83,18 +81,26 @@ async function saveToDataExtension(data) {
     };
 
     try {
-        const response = await RestClient.post({
-            uri: '/hub/v1/dataevents/key:65659DF6-6DED-4C78-9CF3-5683939E4F36/rowset',
-            headers: { 'Content-Type': 'application/json' },
-            json: dePayload
-        });
+        // Obter o token OAuth antes de fazer a requisição
+        const accessToken = await getOAuthToken();
 
-        console.log('Dados gravados na Data Extension:', response.body);
+        const response = await axios.post(
+            'https://YOUR_SUBDOMAIN.rest.marketingcloudapis.com/hub/v1/dataevents/key:65659DF6-6DED-4C78-9CF3-5683939E4F36/rowset',
+            dePayload,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            }
+        );
+
+        console.log('Dados gravados na Data Extension:', response.data);
     } catch (err) {
         console.error('Erro ao gravar na Data Extension:', err);
     }
 }
-*/
+
 
 /*
  * POST Handler for / route of Activity (this is the edit route).
