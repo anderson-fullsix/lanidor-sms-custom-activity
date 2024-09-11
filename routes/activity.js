@@ -50,7 +50,7 @@ function logData(req) {
     console.log("originalUrl: " + req.originalUrl);
 }
 
-
+/*
 // Função para obter o token OAuth
 async function getOAuthToken() {
     const authResponse = await axios.post('https://auth.exacttargetapis.com/v1/requestToken', {
@@ -100,7 +100,7 @@ async function saveToDataExtension(data) {
         console.error('Erro ao gravar na Data Extension:', err);
     }
 }
-
+*/
 
 /*
  * POST Handler for / route of Activity (this is the edit route).
