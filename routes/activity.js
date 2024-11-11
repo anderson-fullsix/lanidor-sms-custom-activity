@@ -235,7 +235,8 @@ let data = JSON.stringify({
   "text": messageText,
   "variavel": decoded.inArguments[0].variavel,
   "sendnow": "true",
-  "recipients": recipients
+  "recipients": recipients,
+  "entrySourceDE": entrySourceDE
 });
 
 console.log("**** payload sent to Client server ****");
