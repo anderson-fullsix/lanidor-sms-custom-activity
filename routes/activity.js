@@ -1,6 +1,13 @@
 'use strict';
 var util = require('util');
 
+connection.trigger('requestSchema');
+
+connection.on('requestedSchema', function (data) {
+   // save schema
+   console.log('*** Schema ***', JSON.stringify(data['schema']));
+});
+
 // Deps
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
