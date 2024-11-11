@@ -250,7 +250,7 @@ console.log("variavel: ", decoded.inArguments[0].variavel);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
-console.log("entrySourceDE: ", entrySourceDE);
+console.log("entrySourceDE: ", decoded.inArguments[0].entrySourceDE);
 
 let config_post = {
   method: 'post',
