@@ -137,6 +137,8 @@ require('dotenv').config();
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+            const entrySourceDE = decoded.inArguments[0].entrySourceDE; // Captura o nome da Data Extension
+            console.log("Nome da Data Extension de Entry Source: ", entrySourceDE);
 /*
   const requestOptions = {
   method: "POST",
