@@ -137,8 +137,6 @@ require('dotenv').config();
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            const entrySourceDE = decoded.inArguments[0].entrySourceDE; // Captura o nome da Data Extension
-            console.log("Nome da Data Extension de Entry Source: ", entrySourceDE);
 /*
   const requestOptions = {
   method: "POST",
@@ -237,8 +235,7 @@ let data = JSON.stringify({
   "text": messageText,
   "variavel": decoded.inArguments[0].variavel,
   "sendnow": "true",
-  "recipients": recipients,
-  "entrySourceDE": decoded.inArguments[0].entrySourceDE
+  "recipients": recipients
 });
 
 console.log("**** payload sent to Client server ****");
@@ -252,7 +249,6 @@ console.log("variavel: ", decoded.inArguments[0].variavel);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
-console.log("entrySourceDE: ", decoded.inArguments[0].entrySourceDE);
 
 let config_post = {
   method: 'post',
