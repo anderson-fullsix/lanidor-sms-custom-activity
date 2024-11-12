@@ -21,7 +21,7 @@
                    "sendingDate": "{{Contact.Attribute.SMSJourney.sendingDate}}",
                    "mobile": "{{Contact.Default.PhoneNumber}}",
                    "variavel": "{{Event.SMSJourney.variavel}}",
-                   "entrySourceDE": "{{Event.DEAudience-EntrySource.DEName}}"
+                   "entrySourceDE": "{{Event.SMSJourney.DEName}}"
                }
            ],
           "outArguments": [],
