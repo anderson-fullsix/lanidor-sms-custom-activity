@@ -180,6 +180,7 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 let recipients = [];
 let mobileNumber = '';
 let variavel = '';
+let variavel2 = '';
 let messageText = ''; // Variável para armazenar o texto da mensagem
 
 console.log("decoded.inArguments: ", JSON.stringify(decoded.inArguments));
@@ -195,6 +196,14 @@ decoded.inArguments.forEach(arg => {
         console.log("variavel não encontrado em: ", arg);
     }
 
+    // Verifica se variavel2 está presente
+    if (arg.variavel2) {
+        variavel2 = arg.variavel2;
+        console.log("variavel2: ", variavel2);
+    } else {
+        console.log("variavel2 não encontrado em: ", arg);
+    }
+    
     // Verifica se o texto da mensagem está presente
     if (arg.text) {
         messageText = arg.text;
@@ -234,6 +243,7 @@ let data = JSON.stringify({
 //  "text": decoded.inArguments[0].text,
   "text": messageText,
   "variavel": decoded.inArguments[0].variavel,
+  "variavel2": decoded.inArguments[0].variavel2,
   "sendnow": "true",
   "recipients": recipients
 });
@@ -246,6 +256,7 @@ console.log("partnerId: ", decoded.inArguments[0].partnerId);
 //console.log("text: ", decoded.inArguments[0].text);
 console.log("text: ", messageText);
 console.log("variavel: ", decoded.inArguments[0].variavel);
+console.log("variavel2: ", decoded.inArguments[0].variavel2);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
