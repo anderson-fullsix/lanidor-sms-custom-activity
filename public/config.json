@@ -17,7 +17,8 @@
            "inArguments":[
                {
                    "mobile": "{{Contact.Default.PhoneNumber}}",
-                   "variavel": "{{Event.SMSJourney.variavel}}"
+                   "variavel": "{{Event.SMSJourney.variavel}}",
+                   "variavel2": "{{Event.DEAudience-ff2331c2-262a-488a-eca9-cd4ba0a88e90..variavel}}"
                }
            ],
           "outArguments": [],
