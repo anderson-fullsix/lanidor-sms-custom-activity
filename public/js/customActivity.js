@@ -189,6 +189,7 @@ define([
 	    "sender": "{{Event.' + eventDefinitionKey + '.sender}}",
             "partnerId": "{{Event.' + eventDefinitionKey + '.partnerId}}",
             "variavel": "{{Event.' + eventDefinitionKey + '.variavel}}",
+            "variavel2": "{{Event.' + eventDefinitionKey + '.variavel}}",
             "sendnow": "true",
             "recipients": 
 		[{ "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}" }]
