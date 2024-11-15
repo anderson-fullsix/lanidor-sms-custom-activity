@@ -14,11 +14,7 @@
     },
     "arguments": {
         "execute": {
-           "inArguments":[
-               {
-                   "mobile": "{{Contact.Default.PhoneNumber}}"
-               }
-           ],
+           "inArguments":[],
           "outArguments": [],
           "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
