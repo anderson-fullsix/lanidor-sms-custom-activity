@@ -192,7 +192,7 @@ define([
             "variavel2": "{{Event.' + eventDefinitionKey + '.variavel}}",
             "sendnow": "true",
             "recipients": 
-		[{ "Mobile": "{{Event." + eventDefinitionKey + ".Mobile}}" }]
+		[{ "Mobile": "{{Event.' + eventDefinitionKey + '.Mobile}}" }]
         }];
 
         payload['metaData'].isConfigured = true;
