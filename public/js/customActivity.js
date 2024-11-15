@@ -71,7 +71,7 @@ define([
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
 		
-	    payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
+	    mobile = payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
             console.log('*** payload0 ***');
             console.log(payload);
 	    
@@ -192,7 +192,7 @@ define([
             "variavel2": "{{Event.' + eventDefinitionKey + '.variavel}}",
             "sendnow": "true",
             "recipients": 
-		[{ "Mobile":"{{Contact.Attribute.SMSJourney.Mobile}}" }]
+		[{ "Mobile": mobile }]
         }];
 
         payload['metaData'].isConfigured = true;
