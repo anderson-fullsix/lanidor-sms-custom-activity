@@ -71,8 +71,7 @@ define([
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
 
-	    var mobile = '';
-	    mobile = payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
+	    payload['arguments'].execute.inArguments[0].Mobile = '{{Event.' + eventDefinitionKey + '.Mobile}}';
             console.log('*** payload0 ***');
             console.log(payload);
 	    
@@ -193,7 +192,7 @@ define([
             "variavel2": "{{Event.' + eventDefinitionKey + '.variavel}}",
             "sendnow": "true",
             "recipients": 
-		[{ "Mobile": mobile }]
+		[{ "Mobile": "{{Event." + eventDefinitionKey + ".Mobile}}" }]
         }];
 
         payload['metaData'].isConfigured = true;
