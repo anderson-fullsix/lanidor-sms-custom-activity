@@ -202,7 +202,7 @@ decoded.inArguments.forEach(arg => {
 
     // Verifica se variavel3 está presente
     if (arg.variavel3) {
-        variavel2 = arg.variavel3;
+        variavel3 = arg.variavel3;
     }
 
     // Verifica se o texto da mensagem está presente
