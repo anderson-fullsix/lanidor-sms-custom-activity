@@ -181,6 +181,7 @@ let recipients = [];
 let mobileNumber = '';
 let variavel = '';
 let variavel2 = '';
+let variavel3 = '';
 let messageText = ''; // Variável para armazenar o texto da mensagem
 
 console.log("decoded.inArguments: ", JSON.stringify(decoded.inArguments));
@@ -202,6 +203,14 @@ decoded.inArguments.forEach(arg => {
         console.log("variavel2: ", variavel2);
     } else {
         console.log("variavel2 não encontrado em: ", arg);
+    }
+
+    // Verifica se variavel3 está presente
+    if (arg.variavel3) {
+        variavel2 = arg.variavel3;
+        console.log("variavel3: ", variavel3);
+    } else {
+        console.log("variavel3 não encontrado em: ", arg);
     }
     
     // Verifica se o texto da mensagem está presente
@@ -231,6 +240,20 @@ if (variavel) {
     console.log("variavel está indefinido. Substituição não realizada.");
 }
 
+if (variavel2) {
+    messageText = messageText.replace("<<variavel2>>", variavel2);
+    console.log("Mensagem final: ", messageText);
+} else {
+    console.log("variavel2 está indefinido. Substituição não realizada.");
+}
+
+if (variavel3) {
+    messageText = messageText.replace("<<variavel3>>", variavel3);
+    console.log("Mensagem final: ", messageText);
+} else {
+    console.log("variavel3 está indefinido. Substituição não realizada.");
+}
+
 // Gerando um messageId único
 const uniqueMessageId = generateUniqueMessageId(mobileNumber);
 console.log("Unique Message ID: ", uniqueMessageId);
@@ -244,6 +267,7 @@ let data = JSON.stringify({
   "text": messageText,
   "variavel": decoded.inArguments[0].variavel,
   "variavel2": decoded.inArguments[0].variavel2,
+  "variavel3": decoded.inArguments[0].variavel3,
   "sendnow": "true",
   "recipients": recipients
 });
@@ -257,6 +281,7 @@ console.log("partnerId: ", decoded.inArguments[0].partnerId);
 console.log("text: ", messageText);
 console.log("variavel: ", decoded.inArguments[0].variavel);
 console.log("variavel2: ", decoded.inArguments[0].variavel2);
+console.log("variavel3: ", decoded.inArguments[0].variavel3);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
