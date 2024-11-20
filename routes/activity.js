@@ -207,7 +207,7 @@ decoded.inArguments.forEach(arg => {
 
     // Verifica se variavel3 está presente
     if (arg.variavel3) {
-        variavel2 = arg.variavel3;
+        variavel3 = arg.variavel3;
         console.log("variavel3: ", variavel3);
     } else {
         console.log("variavel3 não encontrado em: ", arg);
