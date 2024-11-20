@@ -30,7 +30,7 @@ function logData(req) {
         protocol: req.protocol,
         secure: req.secure,
         originalUrl: req.originalUrl
-/*
+    });
     console.log("body: " + util.inspect(req.body));
     console.log("headers: " + req.headers);
     console.log("trailers: " + req.trailers);
@@ -48,7 +48,6 @@ function logData(req) {
     console.log("protocol: " + req.protocol);
     console.log("secure: " + req.secure);
     console.log("originalUrl: " + req.originalUrl);
-*/
 }
 
 /*
@@ -179,10 +178,9 @@ let recipients = decoded.inArguments[0].recipients.map(recipient => {
 */
     
 let recipients = [];
-let mobileNumber = ''; //Variável para armazenar o número do telemóvel do subscriber
-let variavel = ''; // Variável para armazenar o valor do campo "variavel" da Data Extension
-let variavel2 = ''; // Variável para armazenar o valor do campo "variavel2" da Data Extension
-let variavel3 = ''; // Variável para armazenar o valor do campo "variavel3" da Data Extension
+let mobileNumber = '';
+let variavel = '';
+let variavel2 = '';
 let messageText = ''; // Variável para armazenar o texto da mensagem
 
 console.log("decoded.inArguments: ", JSON.stringify(decoded.inArguments));
@@ -193,21 +191,23 @@ decoded.inArguments.forEach(arg => {
     // Verifica se variavel está presente
     if (arg.variavel) {
         variavel = arg.variavel;
+        console.log("variavel: ", variavel);
+    } else {
+        console.log("variavel não encontrado em: ", arg);
     }
 
     // Verifica se variavel2 está presente
     if (arg.variavel2) {
         variavel2 = arg.variavel2;
+        console.log("variavel2: ", variavel2);
+    } else {
+        console.log("variavel2 não encontrado em: ", arg);
     }
-
-    // Verifica se variavel3 está presente
-    if (arg.variavel3) {
-        variavel3 = arg.variavel3;
-    }
-
+    
     // Verifica se o texto da mensagem está presente
     if (arg.text) {
         messageText = arg.text;
+        console.log("Texto da mensagem: ", messageText);
     }
 
     // Itera sobre os destinatários para buscar o número de telefone
@@ -217,6 +217,7 @@ decoded.inArguments.forEach(arg => {
                 if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
                     recipients.push({ "Mobile": obj[key] });
                     mobileNumber = obj[key];
+                    console.log("recipients: ", recipients);
                 }
             }
         });
@@ -225,28 +226,24 @@ decoded.inArguments.forEach(arg => {
 
 if (variavel) {
     messageText = messageText.replace("<<variavel>>", variavel);
-}
-
-if (variavel2) {
-    messageText = messageText.replace("<<variavel2>>", variavel2);
-}
-
-if (variavel3) {
-    messageText = messageText.replace("<<variavel3>>", variavel3);
+    console.log("Mensagem final: ", messageText);
+} else {
+    console.log("variavel está indefinido. Substituição não realizada.");
 }
 
 // Gerando um messageId único
 const uniqueMessageId = generateUniqueMessageId(mobileNumber);
+console.log("Unique Message ID: ", uniqueMessageId);
 
 let data = JSON.stringify({
   "id": uniqueMessageId,
   "description": decoded.inArguments[0].description,
   "sender": decoded.inArguments[0].sender,
   "partnerId": decoded.inArguments[0].partnerId,
+//  "text": decoded.inArguments[0].text,
   "text": messageText,
   "variavel": decoded.inArguments[0].variavel,
   "variavel2": decoded.inArguments[0].variavel2,
-  "variavel3": decoded.inArguments[0].variavel3,
   "sendnow": "true",
   "recipients": recipients
 });
@@ -256,10 +253,10 @@ console.log("id: ", uniqueMessageId);
 console.log("description: ", decoded.inArguments[0].description);
 console.log("sender: ", decoded.inArguments[0].sender);
 console.log("partnerId: ", decoded.inArguments[0].partnerId);
+//console.log("text: ", decoded.inArguments[0].text);
 console.log("text: ", messageText);
 console.log("variavel: ", decoded.inArguments[0].variavel);
 console.log("variavel2: ", decoded.inArguments[0].variavel2);
-console.log("variavel3: ", decoded.inArguments[0].variavel3);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
