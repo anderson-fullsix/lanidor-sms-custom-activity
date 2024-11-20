@@ -189,7 +189,8 @@ define([
 	    "sender": "{{Event.' + eventDefinitionKey + '.sender}}",
             "partnerId": "{{Event.' + eventDefinitionKey + '.partnerId}}",
             "variavel": "{{Event.' + eventDefinitionKey + '.variavel}}",
-            "variavel2": "{{Event.' + eventDefinitionKey + '.variavel}}",
+            "variavel2": "{{Event.' + eventDefinitionKey + '.variavel2}}",
+            "variavel3": "{{Event.' + eventDefinitionKey + '.variavel3}}",
             "sendnow": "true",
             "recipients": 
 		[{ "Mobile": "{{Event.' + eventDefinitionKey + '.Mobile}}" }]
