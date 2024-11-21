@@ -184,8 +184,6 @@ define([
             "id": id,
             "description": description,
             "text": text,
-            "sender": "{{Contact.Attribute.SMSJourney.sender}}",
-            "partnerId": "{{Contact.Attribute.SMSJourney.partnerId}}",
 	    "sender": "{{Event.' + eventDefinitionKey + '.sender}}",
             "partnerId": "{{Event.' + eventDefinitionKey + '.partnerId}}",
             "variavel": "{{Event.' + eventDefinitionKey + '.variavel}}",
