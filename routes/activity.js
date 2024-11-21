@@ -233,6 +233,7 @@ decoded.inArguments.forEach(arg => {
     }
 });
 
+/*
 if (variavel) {
     messageText = messageText.replace("<<variavel>>", variavel);
     console.log("Mensagem final: ", messageText);
@@ -253,6 +254,7 @@ if (variavel3) {
 } else {
     console.log("variavel3 está indefinido. Substituição não realizada.");
 }
+*/
 
 // Gerando um messageId único
 const uniqueMessageId = generateUniqueMessageId(mobileNumber);
