@@ -16,7 +16,7 @@
         "execute": {
            "inArguments":[],
           "outArguments": [],
-          "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/execute",
+          "url": "https://lanidor-custom-activity-b9e8e5c5a9a4dce7.spaincentral-01.azurewebsites.net/journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -28,22 +28,22 @@
     "configurationArguments": {
       "applicationExtensionKey": "4e40acab-5443-465a-ae36-98e467b4088b",
       "save": {
-        "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/save",
+        "url": "https://lanidor-custom-activity-b9e8e5c5a9a4dce7.spaincentral-01.azurewebsites.net/journeybuilder/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/publish",
+        "url": "https://lanidor-custom-activity-b9e8e5c5a9a4dce7.spaincentral-01.azurewebsites.net/journeybuilder/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/stop",
+        "url": "https://lanidor-custom-activity-b9e8e5c5a9a4dce7.spaincentral-01.azurewebsites.net/journeybuilder/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://lanidor-custom-activity-b6139fe2e7f2.herokuapp.com/journeybuilder/validate",
+        "url": "https://lanidor-custom-activity-b9e8e5c5a9a4dce7.spaincentral-01.azurewebsites.net/journeybuilder/validate",
         "verb": "POST",
         "useJwt": true
       }
