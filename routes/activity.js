@@ -156,6 +156,8 @@ axios.get('https://enickt5gs0alo.x.pipedream.net')
     console.log(error);
   })
  */           
+
+/*            
 var token = null
 let config_get = {
   method: 'get',
@@ -165,6 +167,20 @@ let config_get = {
     'Authorization': 'Basic YW5kZXJzb24ubWVuZGVzLWV4dEBmdWxsc2l4LnB0Okxhbmlkb3IjMjAyNCE='
   },
   data : ""
+};
+*/
+
+var token = null
+const authToken = process.env.AUTH_TOKEN;
+
+const config_get = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://www.abinfo.pt/api/sms/auth/login',
+  headers: {
+    'Authorization': `Basic ${authToken}`,
+  },
+  data: '',
 };
 
 axios.request(config_get)
