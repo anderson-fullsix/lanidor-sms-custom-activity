@@ -172,11 +172,12 @@ let config_get = {
 
 var token = null
 const authToken = process.env.AUTH_TOKEN;
+const urlLogin = process.env.URL_LOGIN;
 
 const config_get = {
   method: 'get',
   maxBodyLength: Infinity,
-  url: 'https://www.abinfo.pt/api/sms/auth/login',
+  url: urlLogin,
   headers: {
     'Authorization': `Basic ${authToken}`,
   },
@@ -313,10 +314,12 @@ console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
 */
 
+const urlAction = process.env.URL_ACTION;
+    
 let config_post = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'https://www.abinfo.pt/api/sms/communications',
+  url: urlAction,
   headers: { 
     'Content-Type': 'application/json', 
     'Authorization': 'Bearer ' + token
