@@ -31,6 +31,7 @@ function logData(req) {
         secure: req.secure,
         originalUrl: req.originalUrl
     });
+/*
     console.log("body: " + util.inspect(req.body));
     console.log("headers: " + req.headers);
     console.log("trailers: " + req.trailers);
@@ -48,6 +49,7 @@ function logData(req) {
     console.log("protocol: " + req.protocol);
     console.log("secure: " + req.secure);
     console.log("originalUrl: " + req.originalUrl);
+*/
 }
 
 /*
@@ -167,9 +169,13 @@ let config_get = {
 
 axios.request(config_get)
 .then((response) => {
+/*
   console.log(JSON.stringify(response.data));
+*/
   token = response.data.token
+/*
   console.log("token interno: ", token)
+*/
 
 /*
 let recipients = decoded.inArguments[0].recipients.map(recipient => {
@@ -184,39 +190,42 @@ let variavel2 = '';
 let variavel3 = '';
 let messageText = ''; // Variável para armazenar o texto da mensagem
 
+/*
 console.log("decoded.inArguments: ", JSON.stringify(decoded.inArguments));
 console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);
+*/
 
 // Itera sobre os inArguments
 decoded.inArguments.forEach(arg => {
     // Verifica se variavel está presente
     if (arg.variavel) {
         variavel = arg.variavel;
-        console.log("variavel: ", variavel);
+/*        console.log("variavel: ", variavel);
     } else {
-        console.log("variavel não encontrado em: ", arg);
+        console.log("variavel não encontrado em: ", arg); */ 
     }
 
     // Verifica se variavel2 está presente
     if (arg.variavel2) {
         variavel2 = arg.variavel2;
-        console.log("variavel2: ", variavel2);
+/*        console.log("variavel2: ", variavel2);
     } else {
-        console.log("variavel2 não encontrado em: ", arg);
+        console.log("variavel2 não encontrado em: ", arg); */
     }
 
     // Verifica se variavel3 está presente
     if (arg.variavel3) {
         variavel3 = arg.variavel3;
+/*
         console.log("variavel3: ", variavel3);
     } else {
-        console.log("variavel3 não encontrado em: ", arg);
+        console.log("variavel3 não encontrado em: ", arg); */
     }
     
     // Verifica se o texto da mensagem está presente
     if (arg.text) {
         messageText = arg.text;
-        console.log("Texto da mensagem: ", messageText);
+/*        console.log("Texto da mensagem: ", messageText); */
     }
 
     // Itera sobre os destinatários para buscar o número de telefone
@@ -226,7 +235,7 @@ decoded.inArguments.forEach(arg => {
                 if (obj.hasOwnProperty(key) && key.startsWith('Mobile')) {
                     recipients.push({ "Mobile": obj[key] });
                     mobileNumber = obj[key];
-                    console.log("recipients: ", recipients);
+/*                    console.log("recipients: ", recipients); */
                 }
             }
         });
@@ -235,28 +244,28 @@ decoded.inArguments.forEach(arg => {
 
 if (variavel) {
     messageText = messageText.replace("<<variavel>>", variavel);
-    console.log("Mensagem final: ", messageText);
+/*    console.log("Mensagem final: ", messageText);
 } else {
-    console.log("variavel está indefinido. Substituição não realizada.");
+    console.log("variavel está indefinido. Substituição não realizada."); */
 }
 
 if (variavel2) {
     messageText = messageText.replace("<<variavel2>>", variavel2);
-    console.log("Mensagem final: ", messageText);
+/*    console.log("Mensagem final: ", messageText);
 } else {
-    console.log("variavel2 está indefinido. Substituição não realizada.");
+    console.log("variavel2 está indefinido. Substituição não realizada."); */
 }
 
 if (variavel3) {
     messageText = messageText.replace("<<variavel3>>", variavel3);
-    console.log("Mensagem final: ", messageText);
+/*    console.log("Mensagem final: ", messageText);
 } else {
-    console.log("variavel3 está indefinido. Substituição não realizada.");
+    console.log("variavel3 está indefinido. Substituição não realizada."); */
 }
     
 // Gerando um messageId único
 const uniqueMessageId = generateUniqueMessageId(mobileNumber);
-console.log("Unique Message ID: ", uniqueMessageId);
+/* console.log("Unique Message ID: ", uniqueMessageId); */
 
 let data = JSON.stringify({
   "id": uniqueMessageId,
@@ -272,6 +281,7 @@ let data = JSON.stringify({
   "recipients": recipients
 });
 
+/*
 console.log("**** payload sent to Client server ****");
 console.log("id: ", uniqueMessageId);
 console.log("description: ", decoded.inArguments[0].description);
@@ -285,6 +295,7 @@ console.log("variavel3: ", decoded.inArguments[0].variavel3);
 console.log("sendnow: ", "true");
 console.log("Mobile: ", decoded.inArguments[0].recipients[0].Mobile);
 console.log("recipients: ", recipients);
+*/
 
 let config_post = {
   method: 'post',
@@ -299,7 +310,7 @@ let config_post = {
 
 axios.request(config_post)
 .then((response) => {
-  console.log("JSON stringify: ", JSON.stringify(response.data));
+  /*console.log("JSON stringify: ", JSON.stringify(response.data)); */
   // Chama a função para gravar os dados na Data Extension após a resposta
   //saveToDataExtension(response.data);
 })
@@ -311,11 +322,11 @@ axios.request(config_post)
   console.log("Error axios.request: ", error);
 });
 
-console.log("token externo: ", token)
+/* console.log("token externo: ", token) */
             
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
-            console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);       
+/*            console.log("decoded.inArguments[0]: ", decoded.inArguments[0]);       */
             logData(req);
             res.send(200, 'Execute');
         } else {
