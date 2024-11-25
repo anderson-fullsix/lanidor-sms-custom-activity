@@ -26,7 +26,7 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "d32e02aa-a4c2-4d8d-a5b8-32b76cac097f",
+      "applicationExtensionKey": "{{APPLICATION_EXTENSION_KEY}}",
       "save": {
         "url": "https://lanidor-custom-activity-b9e8e5c5a9a4dce7.spaincentral-01.azurewebsites.net/journeybuilder/save",
           "verb": "POST",
