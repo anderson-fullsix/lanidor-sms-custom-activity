@@ -1,14 +1,6 @@
 'use strict';
 var util = require('util');
 
-const fs = require('fs');
-const path = require('path');
-
-const configPath = path.join(__dirname, 'config.json');
-let config = require(configPath);
-config.configurationArguments.applicationExtensionKey = process.env.APPLICATION_EXTENSION_KEY || 'default-key';
-fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
-
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
